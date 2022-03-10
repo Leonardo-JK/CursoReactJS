@@ -1,0 +1,35 @@
+@import "../abstracts/variables";
+
+.navbar-expand-md {
+    height: $alturaNavbar;
+    padding-left: 20px;
+
+    ul {
+        margin-right: 70px;
+        background-color: aliceblue;
+        border: 1px solid lightgrey;
+        padding-left: 8px;
+        border-radius: 5px;
+
+        
+        ul {
+            background-color: aliceblue;
+            width: max-content;
+        }
+    }    
+    
+    &__button {
+        padding-right: 20px;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .navbar-expand-md {
+        height: $alturaNavbar;
+        padding-left: 20px;
+    
+        ul {
+            border: none;
+        }
+    }
+}

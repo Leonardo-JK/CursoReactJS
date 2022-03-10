@@ -1,0 +1,178 @@
+* {
+    padding: 0px;
+    margin: 0px;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+@import "../sass/views/index";
+@import "../sass/views/indice";
+@import "../sass/views/galeria";
+@import "../sass/views/tablas";
+@import "../sass/views/contacto";
+@import "../sass/views/mapaSitio";
+@import "../sass/views/404";
+@import "../sass/views/juegos";
+@import "../sass/components/navMenu";
+
+.header {
+    height: 20vh;
+    background-image: url(../img/cordillera.png);
+    background-size: cover;
+
+    &__logo {
+        height: 80%;
+        align-self: center;
+    }
+
+    &__titulo {
+        color: white;
+        -webkit-text-stroke: 2px rgb(36,60,88);
+        font-family: "Crimson";
+        font-weight:bold;
+        font-size: 3rem;
+    }
+
+    &__idioma {
+        position: absolute;
+        top: 15px;
+        right: 0px;
+        color: white;
+        font-weight:bolder;
+
+        a {
+            color: white;
+            font-weight: bold;
+            text-decoration: none;
+
+            &:hover {
+                color: grey;
+            }
+        }
+    }
+}
+
+#menu {
+    position: sticky;
+    top: 0px;
+    border: 1px solid;
+    z-index: 4;
+}
+
+.navbar {
+    display: flex;
+    border: 1px solid grey;
+
+    #breadcrumb {
+        align-self: center;
+        margin-bottom: 0px;
+        margin-left: 20px;
+    
+        ol {
+            margin-bottom: 0px;
+        }
+    }
+}
+
+.aside {
+    display: none;
+}
+
+.cuerpo {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding-bottom: 40px;
+    align-items: center;
+    background-image: url(../img/fondo1.jpg);
+
+    p {
+        text-indent: 40px;
+        text-align: justify;
+        width: 90%;
+    }
+
+    @for $i from 1 through 2 {
+        &__titulo#{$i} {
+            text-shadow: $sombraChica;
+            text-align: center;
+            scroll-margin-top: ($alturaBotones + $alturaNavbar + 10px);
+            
+        }
+    }
+
+    &__titulo1 {
+        margin: 40px 0px 30px;
+        font-size: 2rem;
+        text-transform: uppercase;
+    }
+        
+    &__titulo2 {
+        margin-top: 30px;
+    }
+}
+
+.footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 10px;
+    height: 40px;
+    background-color: rgba(116, 101, 101, 0.521);
+}
+
+@media only screen and (min-width: 768px) {
+    .header_titulo {
+        font-size: 4rem;
+    }
+    
+    .aside {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        border: 1px;
+        
+        background-image: linear-gradient(rgba(128, 128, 128, 0.555),rgba(87, 87, 87, 0));
+        border-right: 2px solid white;
+
+        &__titulo {
+            margin-top: 30px;
+            text-shadow: $sombraChica;
+            text-align: center;
+            text-transform: uppercase;
+        }
+
+        div {
+            position: sticky;
+            top: 70px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            p {
+                text-indent: 40px;
+                text-align: justify;
+                width: 90%;
+            }
+        }
+
+        
+    }
+
+    .cuerpo__titulo2 {
+        text-align: start;
+        margin-left: 40px;
+    }
+}
+
+@media only screen and (min-width: 1200px){
+    .header__titulo {
+        font-size: 6rem;
+    }
+
+    .cuerpo__titulo1 {
+        font-size: 3rem;
+    }
+}

@@ -1,0 +1,47 @@
+@import "../abstracts/variables";
+
+.cuerpo__table {
+    margin-top: 20px;
+    font-size: 0.8rem;
+    
+    tr {
+        width: 20%;
+
+        th {
+            background-color: gray;
+            font-weight: bolder;
+            height: 40px;
+            padding: 5px 10px;
+            width: 20%;
+        }
+
+        td {
+            text-align: center;
+
+            ol {
+                display: flex;
+                flex-direction: column;
+                list-style-position: inside;
+                align-items: flex-start;
+
+                li {
+                    text-align: left;
+                }
+            }
+
+            ul {
+                list-style: none;
+            }
+
+            &:first-child {
+                background-color: lightgray;
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .cuerpo__table {
+        font-size: 1rem;
+    }
+}

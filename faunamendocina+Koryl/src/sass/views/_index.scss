@@ -1,0 +1,135 @@
+@import "../abstracts/variables";
+
+.cuerpo {
+    &__videosIntro {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: $anchoContenido;
+    }
+
+    &__iframe {
+        width: $anchoContenido;
+        margin: 10px 0px;
+        border-radius: 10px;
+        box-shadow: $sombra;
+    }
+
+    &__presentacion {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        scroll-margin-top: 60px;
+    }
+    
+    &__imgPresentacion {
+        width: $anchoContenido;
+        margin: 20px 0px;
+        border-radius: 10px;
+        box-shadow: $sombra;
+    }
+
+    &__introduccion {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        scroll-margin-top: 60px;
+    }
+
+    &__intros{
+        display: grid;
+        justify-content: center;
+        grid-template-rows: repeat(5,auto);
+        grid-template-columns: $anchoContenido;
+    } 
+
+    &__descripcion {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    
+        div {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+    }
+
+    &__descripcion {
+        img {
+            width: $anchoContenido;
+            border-radius: 10px;
+            box-shadow: $sombra;
+        }
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .cuerpo {
+        &__videosIntro {
+            flex-direction: row;
+            justify-content: space-evenly;
+        }
+
+        &__iframe {
+            width: ($anchoContenido * 0.5);
+        }
+        
+    }
+}
+
+@media only screen and (min-width: 1200px){
+    .cuerpo {
+        &__presentacion {
+            display: inline-block;
+
+            &__titulo {
+                text-align: center;
+            }
+        }
+
+        &__imgPresentacion {
+            float: left;
+            margin: 0px 3% 20px 5%;
+            width: ($anchoContenido * 0.5);
+            border: 1px solid;
+        }
+
+        &__presentacion{
+            p {
+                margin-left: 5%;
+            }
+        }
+
+        &__intros{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: $anchoContenido;
+            
+            div {
+                width: 100%;
+            }
+        }
+
+        &__descripcion{
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            
+            p {
+                width: 100%;
+            }
+            
+            div {
+                display: inline;
+                width: 70%;
+            }
+    
+            img {
+                display: inline;
+                width: 28%;
+            }
+        }
+    }   
+}

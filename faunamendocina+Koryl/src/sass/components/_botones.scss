@@ -1,0 +1,49 @@
+@import "../abstracts/variables";
+
+.cuerpo {
+    
+    &__botones {
+        position: sticky;
+        top: 50px;
+        z-index: 3;
+        height: $alturaBotones;
+    }
+
+    &__accesos {
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+
+        ul {
+            display: flex;
+            font-size: 3vw;
+            justify-content: space-evenly;
+        
+            li {
+                margin: 0px 0px;
+                }
+        }
+        
+        div {
+            padding-left: 20px;
+            padding-right: 20px;
+            width: max-content;
+        }
+    }
+
+    &__botonBusqueda {
+        background-color: rgb(142, 175, 204) !important;
+
+        &:hover{
+            background-color: greenyellow !important;
+        }
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .cuerpo__accesos{
+        ul {
+            font-size: 1.4em;
+        }
+    }
+}

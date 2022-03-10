@@ -1,0 +1,17 @@
+.cuerpo {
+    &__listaMapa {
+        list-style: none;
+        align-self: flex-start;
+
+        a {
+            text-decoration: none;
+            color: black;
+        }
+        
+        li {
+            list-style: none;
+            padding-left: 40px;
+            font-size: 1.2rem;
+        }
+    }
+}
