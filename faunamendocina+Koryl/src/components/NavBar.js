@@ -1,19 +1,21 @@
 import React from 'react';
 import CartWidget from './CartWidget';
-import logo1b from '../img/logo1b.png';
-
 
 function NavBar (props){
     return (
         <div className='navbar'>
+            <div className='navbar__filtros'>
+                <p>Filtros</p>
+            </div>
             <div id='menu' className='navbar__menu'>
-                <ul><span className='navbar__title'>MENU</span>
-                    <li><a id='remeras' href='#'>PRODUCTOS</a></li>
-                    <li><a id='tasas' href='#'>TASAS</a></li>
+                <ul>
+                    <li><a id='remeras' href='#'>TASAS</a></li>
+                    <li><a id='tasas' href='#'>REMERAS</a></li>
                     <li><a id='adornos' href='#'>ADORNOS</a></li>
+                    <li><a id='calendarios' href='#'>CALENDARIOS</a></li>
                 </ul>
             </div>
-            <div>
+            <div className='navbar__cart'>
                 <CartWidget />
             </div>
         </div>

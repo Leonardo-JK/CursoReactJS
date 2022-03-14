@@ -3,8 +3,8 @@ import logoCarrito from "../img/logoCarrito.png";
 
 function CartWidget(){
     return (
-        <div>
-            <img src={logoCarrito} alt='icono carrito de compras' />
+        <div className='cartWidget'>
+            <img className='cartWidget__img' src={logoCarrito} alt='icono carrito de compras' />
         </div>
     );
 }
