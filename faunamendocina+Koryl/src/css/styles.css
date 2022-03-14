@@ -1,0 +1,113 @@
+* {
+  padding: 0px;
+  margin: 0px;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-family: "Crimson Pro", Arial, Helvetica, sans-serif;
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 7rem;
+  align-items: center;
+  background-image: url("../img/cordillera.png");
+}
+.header__icon {
+  width: 7rem;
+  text-align: center;
+}
+.header__head {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: calc(100% - 7rem);
+}
+.header__language {
+  font-weight: bolder;
+  text-align: end;
+  padding: 1rem 2rem 0 0;
+}
+.header__language p {
+  color: white;
+  font-weight: bolder;
+}
+.header__language a {
+  color: white;
+  text-decoration: none;
+}
+.header__language a:visited {
+  text-decoration: none;
+}
+.header__title {
+  color: #2f547e;
+  -webkit-text-stroke: 2px #243c58;
+  font-weight: 900;
+  text-align: center;
+  font-size: 2rem;
+  font-stretch: ultra-expanded;
+}
+
+.navbarP {
+  display: flex;
+  justify-content: center;
+  border-top: 1px solid azure;
+  border-bottom: 1px solid azure;
+  background-color: #243c58;
+  height: 2.5rem;
+}
+.navbarP ul {
+  list-style: none;
+  padding-inline-start: 0px;
+}
+.navbarP li a {
+  color: white;
+  text-decoration: none;
+}
+.navbarP li a:visited {
+  text-decoration: none;
+}
+.navbarP li a:hover li {
+  font-weight: 300;
+  background-color: #29466e;
+}
+.navbarP li:hover {
+  background-color: #29466e;
+}
+.navbarP li:hover ul {
+  display: block;
+}
+.navbarP__list {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.navbarP__list > li {
+  position: relative;
+  color: #f0f0f0;
+  padding: 0.5rem 2rem;
+  min-width: 5rem;
+  font-size: 1.25rem;
+}
+.navbarP__submenu {
+  position: absolute;
+  top: 1.75rem;
+  left: 0;
+  display: none;
+  background-color: #243c58;
+  width: 9rem;
+  margin-top: 0.6rem;
+}
+.navbarP__submenu li {
+  width: 8rem;
+  padding: 0.5rem;
+  font-size: 1rem;
+  text-align: center;
+}
+
+/*# sourceMappingURL=styles.css.map */
