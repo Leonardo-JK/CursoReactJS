@@ -1,3 +1,5 @@
+@import 'abstracts/_variables.scss';
+
 * {
     padding: 0px;
     margin: 0px;
@@ -7,6 +9,12 @@
 html {
     scroll-behavior: smooth;
     font-family: 'Crimson Pro', Arial, Helvetica, sans-serif;
+}
+
+.App {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .header {
@@ -60,6 +68,7 @@ html {
 
 .navbarP {
     display: flex;
+    width: 100%;
     justify-content: center;
     border-top: 1px solid azure;
     border-bottom: 1px solid azure;
@@ -131,6 +140,7 @@ html {
 }
 
 .navbar {
+    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -191,7 +201,93 @@ html {
     justify-content: center;
     height: 100%;
 
+    &__div {
+        height: 70%;
+        position: relative;
+    }
+
     &__img {
-        height: 60%;
+        height: 100%;
+    }
+
+    &__number {
+        display: none;
+        position: absolute;
+        width: 1.25rem;
+        height: 1.25rem;
+        padding-bottom: 1rem;
+        text-align: center;
+        color: white;
+        background-color: green;
+        border: 0px solid green;
+        border-radius: 0.5rem;
+        top: 0;
+        right: 0;
+        border: $b;
+    }
+}
+
+.products {
+    width: 90%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
+    align-items: center;
+
+    &__item {
+        width: 13rem;
+        background-color: rgb(83, 82, 82);
+        padding: 0.5rem;
+    }
+
+    &__img {
+        padding: 1rem 1rem 0 1rem;
+        background-color: rgb(216, 216, 216);
+    }
+
+    &__title {
+        text-decoration: underline;
+        margin: 2rem 0;
+    }
+
+    &__price {
+        p {
+            font-size: 2.5rem;
+            color: white;
+
+            sup {
+                font-size: 1rem;
+            }
+        }
+    }
+
+    &__itemName {
+        color: white;
+        font-size: 1rem;
+        padding-bottom: 0.5rem;
+    }
+}
+
+.buyComand {
+    display: flex;
+    flex-direction: column;
+
+    &__input {
+        border: $b;
+        background-color: white;
+        padding: 0.5rem;
+    }
+
+    &__addButton {
+        margin-top: 0.5rem;
+        background-color: rgb(172, 204, 212);
+        padding: 0.2rem 0.5rem;
+        border-radius: 0.5rem;
+        color: azure;
+    }
+
+    &__stock {
+        color: white;
     }
 }
