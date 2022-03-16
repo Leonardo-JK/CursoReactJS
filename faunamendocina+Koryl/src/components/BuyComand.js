@@ -1,16 +1,21 @@
 import React, {useState} from 'react';
-import { extraerItem, actualizarstock } from '../scripts/JsonManager';
+import {cantidad, stockItem, actualizarStock, sumar} from '../scripts/variables';
 
-function BuyComand() {
-    const [cant, setCant] = useState([1]);
-    let [stock, setStock] = useState(extraerItem("remeras", "Remera Guanaco Comica").stock);
-    let [suma, setSuma] = useState(0);
+
+let suma; 
+
+function BuyComand(onAdd) {
+    const [cant, setCant] = useState(1);
+    let [stock, setStock] = useState(stockItem);
+    
 
     function agregar(){
-        setStock(stock - cant); 
-        setSuma(suma + cant);
-        actualizarstock("remeras", "Remera Guanaco Comica", stock);
-
+        console.log(cantidad);
+        setStock(stock - cant);
+        suma = cantidad + cant;
+        sumar();
+        actualizarStock(stock);
+        setCant(0);
     }
     
 
@@ -18,7 +23,7 @@ function BuyComand() {
         <div className='buyComand'>
             <div className='buyComand__input'>
                 <input id='item1' type='range' min={1} max={stock} step={1} 
-                    name='item1'placeholder={1} value={cant} onInput={e => setCant(e.target.value)}/>
+                    name='item1'placeholder={0} value={cant} onInput={e => setCant(e.target.value)}/>
                 <br></br>
                 <label for='item1' id='item1Label'>Cantidad: {cant}</label>
                 <br></br>
@@ -33,4 +38,4 @@ function BuyComand() {
 }
 
 
-export default BuyComand;
+export {suma, BuyComand};
