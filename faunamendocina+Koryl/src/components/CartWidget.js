@@ -1,5 +1,6 @@
 import React from 'react';
 import logoCarrito from "../img/logoCarrito.png";
+import BuyComand from './BuyComand';
 
 function CartWidget(props){
     return (
@@ -7,7 +8,7 @@ function CartWidget(props){
             <div className='cartWidget__div'>
                 <img className='cartWidget__img' src={logoCarrito} alt='icono carrito de compras' />
                 <div className='cartWidget__number'>
-                    <p>{props.num}</p>
+                    <p className='cartWidget__num'>{props.num}</p>
                 </div>
             </div>
         </div>

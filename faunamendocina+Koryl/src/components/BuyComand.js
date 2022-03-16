@@ -1,16 +1,16 @@
 import React, {useState} from 'react';
 import { extraerItem, actualizarstock } from '../scripts/JsonManager';
 
-
 function BuyComand() {
     const [cant, setCant] = useState([1]);
     let [stock, setStock] = useState(extraerItem("remeras", "Remera Guanaco Comica").stock);
-    console.log(stock);
+    let [suma, setSuma] = useState(0);
 
     function agregar(){
-        
         setStock(stock - cant); 
+        setSuma(suma + cant);
         actualizarstock("remeras", "Remera Guanaco Comica", stock);
+
     }
     
 
@@ -27,8 +27,7 @@ function BuyComand() {
 
             <div className='buyComand__stock'>
                 <p>Stock: {stock}</p>
-            </div>
-        
+            </div>        
         </div>
     )
 }

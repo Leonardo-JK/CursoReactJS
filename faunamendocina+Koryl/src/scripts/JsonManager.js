@@ -1,5 +1,4 @@
 import itemData from '../data/stock.json';
-import fs from 'fs';
 
 function extraerItem(category, name){
     for(let cat of itemData){
@@ -13,8 +12,6 @@ function extraerItem(category, name){
     }
 }
 
-
-
 function actualizarstock(category, name, newStock){
     let stockData = JSON.parse(itemData);
 
@@ -24,7 +21,6 @@ function actualizarstock(category, name, newStock){
                 if(name === item.nombre){
                     item.stock = newStock;
                     stockData = JSON.stringify(stockData);
-                    fs.writeFileSync('../data/stock.json', stockData);
                 }
             }
         }
