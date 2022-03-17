@@ -1,29 +1,23 @@
 import React, {useState} from 'react';
-import {cantidad, stockItem, actualizarStock, sumar} from '../scripts/variables';
 
-
-let suma; 
-
-function BuyComand(onAdd) {
-    const [cant, setCant] = useState(1);
-    let [stock, setStock] = useState(stockItem);
-    
+function BuyComand() {
+    let cantidad = localStorage.cantidad;
+    let [stock, setStock] = useState(localStorage.stock);
+    console.log(stock);
+    let [cant, setCant] = useState(1);
 
     function agregar(){
-        console.log(cantidad);
         setStock(stock - cant);
-        suma = cantidad + cant;
-        sumar();
-        actualizarStock(stock);
         setCant(0);
+        localStorage.setItem("cantidad", (JSON.parse(localStorage.cantidad) + JSON.parse(cant)));
+        console.log(localStorage.cantidad);
     }
-    
 
     return (
         <div className='buyComand'>
             <div className='buyComand__input'>
                 <input id='item1' type='range' min={1} max={stock} step={1} 
-                    name='item1'placeholder={0} value={cant} onInput={e => setCant(e.target.value)}/>
+                    name='item1'placeholder={1} value={cant} onInput={e => setCant(e.target.value)}/>
                 <br></br>
                 <label for='item1' id='item1Label'>Cantidad: {cant}</label>
                 <br></br>
@@ -38,4 +32,4 @@ function BuyComand(onAdd) {
 }
 
 
-export {suma, BuyComand};
+export default BuyComand;

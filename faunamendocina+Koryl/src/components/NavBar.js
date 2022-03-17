@@ -1,7 +1,7 @@
 import React from 'react';
 import CartWidget from './CartWidget';
 
-function NavBar (props){
+function NavBar (cant){
     return (
         <div className='navbar'>
             <div className='navbar__filtros'>

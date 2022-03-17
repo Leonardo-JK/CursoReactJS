@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import item from '../img/remeraGenericaChica.png';
-import {BuyComand} from './BuyComand';
+import BuyComand from './BuyComand';
 
 function ItemListContainer() {
   return (
