@@ -8,7 +8,11 @@ function BuyComand() {
 
     function agregar(){
         setStock(stock - cant);
-        setCant(0);
+        setCant(1);
+        if((stock - cant) === 0){
+            setCant(0);
+        }
+        
         localStorage.setItem("cantidad", (JSON.parse(localStorage.cantidad) + JSON.parse(cant)));
         console.log(localStorage.cantidad);
     }

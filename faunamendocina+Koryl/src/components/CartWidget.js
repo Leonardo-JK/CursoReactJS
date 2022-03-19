@@ -1,9 +1,13 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import logoCarrito from "../img/logoCarrito.png";
 
 
-function CartWidget(num){
-    
+function CartWidget(){
+    let [cantidad, setCantidad] = useState(JSON.parse(localStorage.cantidad));
+
+    useEffect(() => {
+
+    })
     return (
         <div className='cartWidget'>
             <div className='cartWidget__div'>
