@@ -1,12 +1,15 @@
-import React, {useState} from 'react';
+import React from 'react';
 import BuyComand from './BuyComand';
 
+const cargarImagen = require.context("./../img", true);
+
 function Item(props) {
-    const [img, setImg] = useState(props.src);
+
+    console.log(props.src);
     return (
         <div className='items'>
             <div className='items__item'>
-                <img src={require("../img/remeraCondor.png")} alt={props.alt} />
+                <img src={cargarImagen(`${props.src}`)}alt={props.alt} />
                 <div className='items__price'>
                     <p>$ {props.price}<sup>00</sup></p>
                 </div>
