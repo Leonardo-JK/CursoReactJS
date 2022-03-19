@@ -1,63 +1,73 @@
 [   
     {
-        "categoria": "remeras",
+        "id": 0,
+        "categoria": "Remeras",
         "detalle": "Remera Clasica Negra de Algodon",
         "items": [
                     {
-                        "nombre": "Remera Guanaco Comica",
+                        "nombre": "Remera Condor",
                         "talles": ["XS", "S", "M", "L", "XL", "XXL"],
                         "stock": 200,
-                        "precio": 1200
+                        "precio": 1200,
+                        "url": "../img/remeraCondor.png"
 
                     },
                     {
                         "nombre": "Remera Halcon Peregrino",
                         "talles": ["XS", "S", "M", "L", "XL", "XXL"],
                         "stock": 100,
-                        "precio": 1200
+                        "precio": 1200,
+                        "url": "../img/remeraHalconPeregrino.png"
                     },
                     {
                         "nombre": "Remera Puma",
                         "talles": ["XS", "S", "M", "L", "XL", "XXL"],
                         "stock": 100,
-                        "precio": 1200
+                        "precio": 1200,
+                        "url": "../img/remeraPuma.png"
                     },
                     {
                         "nombre": "Remera Serpiente Coral",
                         "talles": ["XS", "S", "M", "L", "XL", "XXL"],
                         "stock": 100,
-                        "precio": 1200
+                        "precio": 1200,
+                        "url": "../img/remeraSerpienteCoral.png"
                     }
         ]         
     },
     {
-        "categoria": "tasas",
+        "id": 1,
+        "categoria": "Tasas",
         "detalle": "Tasas de Ceramica Frio/Calor",
         "items": [
                     {
-                        "nombre": "Tasa Guanaco Comica",
+                        "nombre": "Tasa Condor",
                         "tamanno": [200, 500],
                         "stock": 100,
-                        "precio": 500
+                        "precio": 500,
+                        "url": "../img/tasaCondor.png"
                     },
                     {
                         "nombre": "Tasa Halcon Peregrino",
                         "tamanno": [200, 500],
                         "stock": 100,
-                        "precio": 500
+                        "precio": 500,
+                        "url": "../img/tasaHalconPeregrino.png"
                     },
                     {
                         "nombre": "Tasa Puma",
                         "tamanno": [200, 500],
                         "stock": 100,
-                        "precio": 500
+                        "precio": 500,
+                        "url": "../img/tasaPuma.png"
 
                     },
                     {
                         "nombre": "Tasa Serpiente Coral",
                         "tamanno": [200, 500],
                         "stock": 100,
-                        "precio": 500
+                        "precio": 500,
+                        "url": "../img/tasaSerpienteCoral.png"
                     }
         ]        
     }
