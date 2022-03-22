@@ -1,11 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ItemCount from './ItemCount';
 
 const cargarImagen = require.context("./../img", true);
 
 function Item(props) {
-
-    console.log(props.src);
+    
     return (
         <div className='items'>
             <div className='items__item'>
@@ -19,7 +18,7 @@ function Item(props) {
                     <p>{props.itemName}</p>
                 </div>
                 <div className='items__compra'>
-                    <ItemCount stock={props.stock} initial={1}/>
+                    <ItemCount stock={props.stock} initial={1} onAdd={props.onAdd}/>
                 </div>
             </div>
         </div>
