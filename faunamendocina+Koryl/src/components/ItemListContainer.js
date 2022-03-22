@@ -3,12 +3,7 @@ import ItemList from './ItemList';
 
 function ItemListContainer(props) {
     let [info, setInfo] = useState([]);
-    let [cantCart, setCantCart] = useState(0);
-
-    function onAdd(cant){
-        setCantCart(JSON.parse(cantCart) + JSON.parse(cant));
-        console.log("suma " + cantCart);        
-    }
+    
 
     const datos = new Promise((resolve, reject) => {
         setTimeout(function(){
@@ -26,7 +21,7 @@ function ItemListContainer(props) {
                 return (
                     <div key={dat.categoria} className='products__list'>
                         <h2 className='products__title'>{dat.categoria}</h2>
-                        <ItemList elementos={dat.items} onAdd={onAdd} />
+                        <ItemList elementos={dat.items} />
                     </div>
                 )
             })): null}

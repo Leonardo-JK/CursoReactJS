@@ -4,7 +4,13 @@ import ItemCount from './ItemCount';
 const cargarImagen = require.context("./../img", true);
 
 function Item(props) {
-    
+    let [cantCart, setCantCart] = useState(0);
+
+    function onAdd(cant){
+        setCantCart(JSON.parse(cantCart) + JSON.parse(cant));
+        console.log("suma " + cantCart);        
+    }
+
     return (
         <div className='items'>
             <div className='items__item'>
@@ -18,7 +24,7 @@ function Item(props) {
                     <p>{props.itemName}</p>
                 </div>
                 <div className='items__compra'>
-                    <ItemCount stock={props.stock} initial={1} onAdd={props.onAdd}/>
+                    <ItemCount stock={props.stock} initial={1} onAdd={onAdd}/>
                 </div>
             </div>
         </div>
