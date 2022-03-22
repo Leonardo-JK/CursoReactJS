@@ -228,15 +228,16 @@ html {
 }
 
 .products {
-    width: 90%;
+    width: 100%;
     text-align: center;
     display: flex;
     flex-direction: column;
     justify-self: center;
     align-items: center;
+    background-image: url('../img/fondo1.jpg');
 
     &__list {
-        width: 100%;
+        width: 90%;
     }
 
     &__title {
@@ -266,15 +267,21 @@ html {
         width: 13rem;
         background-color: rgb(83, 82, 82);
         padding: 0.5rem;
-
-        img {
-            width: 100%;
-            padding: 1rem 1rem 0 1rem;
-            background-color: rgb(216, 216, 216);
-        }
     }
 
-    
+    &__img {
+        height: 11rem;
+        width: 100%;
+        background-color: rgb(216, 216, 216);
+        border: $b;
+
+
+        img {
+            height:  90%;
+            padding: 1rem 1rem 1rem 1rem;
+            background-color: rgb(216, 216, 216);
+        }
+    }    
 
     &__title {
         text-decoration: underline;
@@ -299,7 +306,7 @@ html {
     }
 }
 
-.buyComand {
+.itemCount {
     display: flex;
     flex-direction: column;
 

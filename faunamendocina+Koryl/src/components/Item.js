@@ -1,5 +1,5 @@
 import React from 'react';
-import BuyComand from './BuyComand';
+import ItemCount from './ItemCount';
 
 const cargarImagen = require.context("./../img", true);
 
@@ -9,7 +9,9 @@ function Item(props) {
     return (
         <div className='items'>
             <div className='items__item'>
-                <img src={cargarImagen(`${props.src}`)}alt={props.alt} />
+                <div className='items__img'>
+                    <img src={cargarImagen(`${props.src}`)} alt={props.alt} />
+                </div>
                 <div className='items__price'>
                     <p>$ {props.price}<sup>00</sup></p>
                 </div>
@@ -17,7 +19,7 @@ function Item(props) {
                     <p>{props.itemName}</p>
                 </div>
                 <div className='items__compra'>
-                    <BuyComand/>
+                    <ItemCount stock={props.stock} initial={1}/>
                 </div>
             </div>
         </div>

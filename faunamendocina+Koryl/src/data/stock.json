@@ -42,31 +42,101 @@
                     {
                         "nombre": "Tasa Condor",
                         "tamanno": [200, 500],
-                        "stock": 100,
+                        "stock": 50,
                         "precio": 500,
-                        "url": "./remeraCondor.png"
+                        "url": "./tasaCondor.png"
                     },
                     {
                         "nombre": "Tasa Halcon Peregrino",
                         "tamanno": [200, 500],
-                        "stock": 100,
+                        "stock": 50,
                         "precio": 500,
-                        "url": "./remeraCondor.png"
+                        "url": "./tasaHalconPeregrino.png"
                     },
                     {
                         "nombre": "Tasa Puma",
                         "tamanno": [200, 500],
-                        "stock": 100,
+                        "stock": 50,
                         "precio": 500,
-                        "url": "./remeraCondor.png"
+                        "url": "./tasaPuma.png"
                     },
                     {
                         "nombre": "Tasa Serpiente Coral",
                         "tamanno": [200, 500],
-                        "stock": 100,
+                        "stock": 50,
                         "precio": 500,
-                        "url": "./remeraCondor.png"
+                        "url": "./tasaSerpienteCoral.png"
                     }
         ]        
+    },
+    {
+        "id": 0,
+        "categoria": "Gorras",
+        "detalle": "Gorras de Algon/Poliester",
+        "items": [
+                    {
+                        "nombre": "Gorra Condor",
+                        "talles": ["XS", "S", "M", "L", "XL", "XXL"],
+                        "stock": 100,
+                        "precio": 800,
+                        "url": "./gorraCondor.png"
+                    },
+                    {
+                        "nombre": "Gorra Halcon Peregrino",
+                        "talles": ["XS", "S", "M", "L", "XL", "XXL"],
+                        "stock": 100,
+                        "precio": 800,
+                        "url": "./gorraHalconPeregrino.png"
+                    },
+                    {
+                        "nombre": "Gorra Puma",
+                        "talles": ["XS", "S", "M", "L", "XL", "XXL"],
+                        "stock": 100,
+                        "precio": 800,
+                        "url": "./gorraPuma.png"
+                    },
+                    {
+                        "nombre": "Gorra Serpiente Coral",
+                        "talles": ["XS", "S", "M", "L", "XL", "XXL"],
+                        "stock": 100,
+                        "precio": 800,
+                        "url": "./gorraSerpienteCoral.png"
+                    }
+        ]         
+    },
+    {
+        "id": 0,
+        "categoria": "Buzos",
+        "detalle": "Buzo de Algodon Unisex",
+        "items": [
+                    {
+                        "nombre": "Buzo Condor",
+                        "talles": ["XS", "S", "M", "L", "XL", "XXL"],
+                        "stock": 150,
+                        "precio": 1600,
+                        "url": "./buzoCondor.png"
+                    },
+                    {
+                        "nombre": "Buzo Halcon Peregrino",
+                        "talles": ["XS", "S", "M", "L", "XL", "XXL"],
+                        "stock": 150,
+                        "precio": 1600,
+                        "url": "./buzoHalconPeregrino.png"
+                    },
+                    {
+                        "nombre": "Buzo Puma",
+                        "talles": ["XS", "S", "M", "L", "XL", "XXL"],
+                        "stock": 150,
+                        "precio": 1600,
+                        "url": "./buzoPuma.png"
+                    },
+                    {
+                        "nombre": "Buzo Serpiente Coral",
+                        "talles": ["XS", "S", "M", "L", "XL", "XXL"],
+                        "stock": 150,
+                        "precio": 1600,
+                        "url": "./buzoSerpienteCoral.png"
+                    }
+        ]         
     }
 ]

@@ -196,15 +196,16 @@ html {
 }
 
 .products {
-  width: 90%;
+  width: 100%;
   text-align: center;
   display: flex;
   flex-direction: column;
   justify-self: center;
   align-items: center;
+  background-image: url("../img/fondo1.jpg");
 }
 .products__list {
-  width: 100%;
+  width: 90%;
 }
 .products__title {
   font-size: 3rem;
@@ -233,9 +234,15 @@ html {
   background-color: #535252;
   padding: 0.5rem;
 }
-.items__item img {
+.items__img {
+  height: 11rem;
   width: 100%;
-  padding: 1rem 1rem 0 1rem;
+  background-color: #d8d8d8;
+  border: 1px solid;
+}
+.items__img img {
+  height: 90%;
+  padding: 1rem 1rem 1rem 1rem;
   background-color: #d8d8d8;
 }
 .items__title {
@@ -255,23 +262,23 @@ html {
   padding-bottom: 0.5rem;
 }
 
-.buyComand {
+.itemCount {
   display: flex;
   flex-direction: column;
 }
-.buyComand__input {
+.itemCount__input {
   border: 1px solid;
   background-color: white;
   padding: 0.5rem;
 }
-.buyComand__addButton {
+.itemCount__addButton {
   margin-top: 0.5rem;
   background-color: #acccd4;
   padding: 0.2rem 0.5rem;
   border-radius: 0.5rem;
   color: azure;
 }
-.buyComand__stock {
+.itemCount__stock {
   color: white;
 }
 

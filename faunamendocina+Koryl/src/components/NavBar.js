@@ -11,7 +11,7 @@ function NavBar (cant){
                 <ul>
                     <li><a id='remeras' href='#'>TASAS</a></li>
                     <li><a id='tasas' href='#'>REMERAS</a></li>
-                    <li><a id='adornos' href='#'>ADORNOS</a></li>
+                    <li><a id='adornos' href='#'>GORRAS</a></li>
                     <li><a id='calendarios' href='#'>CALENDARIOS</a></li>
                 </ul>
             </div>
