@@ -244,6 +244,7 @@ html {
         font-size: 3rem;
         text-align: left;
         padding-left: 10rem;
+        margin-top: 2rem;
     }
 }
 
@@ -262,11 +263,17 @@ html {
     flex-direction: column;
     justify-self: center;
     align-items: center;
+    margin-top: 2rem;
 
     &__item {
         width: 13rem;
         background-color: rgb(83, 82, 82);
         padding: 0.5rem;
+
+        a {
+            text-decoration: none;
+            border: 2px black;
+        }
     }
 
     &__img {
@@ -326,5 +333,88 @@ html {
 
     &__stock {
         color: white;
+    }
+}
+
+.carga{
+    height: 100vh;
+    margin-top: 5rem;
+}
+
+.detalles{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-image: url('../img/fondo1.jpg');
+}
+
+.itemDetail{
+    display: flex;
+    justify-content: space-between;
+    width: 70%;
+    margin-top: 2rem;
+    background-color: rgb(83, 82, 82);
+    border: $b;
+
+    &__img{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 2rem;
+        padding: 2rem;
+        background-color: rgb(216, 216, 216);
+        border: $b;
+    }
+
+    &__info{
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        margin: 2rem;
+        padding: 2rem;
+        color: azure;   
+    }
+
+    &__title{
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        margin-top: 1rem;
+    }
+
+    &__descrip{
+        font-size: 2rem;
+        margin-bottom: 1rem;
+        margin-top: 1rem;
+    }
+
+    &__descripcion{
+        font-size: 1.5rem;
+        margin-bottom: 3rem;
+        margin-top: 1rem;
+    }
+
+    &__precio{
+        font-size: 4rem;
+        margin-bottom: 3rem;
+        margin-top: 1rem;
+
+        sup{
+            font-size: 1.5rem;
+        }
+    }
+
+    &__tamanno{
+        list-style: none;
+        display: flex;
+        justify-content: space-around;
+        margin-top: 1rem;
+        
+        li{
+            width: 4rem;
+
+            input{
+                margin: 0.5rem;
+            }
+        }
     }
 }

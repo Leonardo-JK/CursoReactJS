@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import ItemList from './ItemList';
 
 function ItemListContainer(props) {
-    let [info, setInfo] = useState([]);
+    let [info, setInfo] = useState(false);
     
 
     const datos = new Promise((resolve, reject) => {
@@ -11,20 +11,21 @@ function ItemListContainer(props) {
         }, 2000);
     });
         
-    datos.then((respuesta) => {setInfo(respuesta); 
-            console.log(respuesta)
+    datos.then((respuesta) => {
+        setInfo(respuesta);
+        console.log(respuesta);
         });
 
     return (
         <div className='products'>
-            {info ? (info.map((dat) => {
-                return (
-                    <div key={dat.categoria} className='products__list'>
-                        <h2 className='products__title'>{dat.categoria}</h2>
-                        <ItemList elementos={dat.items} />
+            {info ? 
+                    <div className='products__list'>
+                        <h2 className='products__title'>Catálogo</h2>
+                        <ItemList elementos={info} />
                     </div>
-                )
-            })): null}
+                
+                    : <h1 className='carga'>Cargando...</h1>
+            }
         </div>
     )
 }

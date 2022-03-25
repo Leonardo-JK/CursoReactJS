@@ -7,8 +7,8 @@ function ItemList(props) {
         <div className='itemList'>
             {props.elementos.map((item) => {
                 return (
-                    <div key={item.nombre}>
-                        <Item itemName={item.nombre} price={item.precio} src={item.url} alt={item.nombre} stock={item.stock} />
+                    <div >
+                        <Item itemName={item.nombre} price={item.precio} src={item.url} alt={item.nombre} stock={item.stock} id={item.id}/>
                     </div>
                     
                 )

@@ -1,142 +1,162 @@
 [   
     {
         "id": 0,
-        "categoria": "Remeras",
-        "detalle": "Remera Clasica Negra de Algodon",
-        "items": [
-                    {
-                        "nombre": "Remera Condor",
-                        "talles": ["XS", "S", "M", "L", "XL", "XXL"],
-                        "stock": 200,
-                        "precio": 1200,
-                        "url": "./remeraCondor.png"
-                    },
-                    {
-                        "nombre": "Remera Halcon Peregrino",
-                        "talles": ["XS", "S", "M", "L", "XL", "XXL"],
-                        "stock": 100,
-                        "precio": 1200,
-                        "url": "./remeraHalconPeregrino.png"
-                    },
-                    {
-                        "nombre": "Remera Puma",
-                        "talles": ["XS", "S", "M", "L", "XL", "XXL"],
-                        "stock": 100,
-                        "precio": 1200,
-                        "url": "./remeraPuma.png"
-                    },
-                    {
-                        "nombre": "Remera Serpiente Coral",
-                        "talles": ["XS", "S", "M", "L", "XL", "XXL"],
-                        "stock": 100,
-                        "precio": 1200,
-                        "url": "./remeraSerpienteCoral.png"
-                    }
-        ]         
+        "nombre": "Remera Condor",
+        "precio": 1250,
+        "url": "./remeraCondor.png",
+        "stock": 130,
+        "descripcion": "Remera clásica de algodón con estampa de condor, unisex.",
+        "tamannos": ["XS", "S", "M", "L", "XL", "XXL"],
+        "categoria": "remeras"                         
     },
     {
         "id": 1,
-        "categoria": "Tasas",
-        "detalle": "Tasas de Ceramica Frio/Calor",
-        "items": [
-                    {
-                        "nombre": "Tasa Condor",
-                        "tamanno": [200, 500],
-                        "stock": 50,
-                        "precio": 500,
-                        "url": "./tasaCondor.png"
-                    },
-                    {
-                        "nombre": "Tasa Halcon Peregrino",
-                        "tamanno": [200, 500],
-                        "stock": 50,
-                        "precio": 500,
-                        "url": "./tasaHalconPeregrino.png"
-                    },
-                    {
-                        "nombre": "Tasa Puma",
-                        "tamanno": [200, 500],
-                        "stock": 50,
-                        "precio": 500,
-                        "url": "./tasaPuma.png"
-                    },
-                    {
-                        "nombre": "Tasa Serpiente Coral",
-                        "tamanno": [200, 500],
-                        "stock": 50,
-                        "precio": 500,
-                        "url": "./tasaSerpienteCoral.png"
-                    }
-        ]        
+        "nombre": "Remera Halcón Peregrino",
+        "precio": 1200,
+        "url": "./remeraHalconPeregrino.png",
+        "stock": 90,
+        "descripcion": "Remera clásica de algodón con estampa de halcón peregrino, unisex.",
+        "tamannos": ["XS", "S", "M", "L", "XL", "XXL"],
+        "categoria": "remeras"                       
     },
     {
-        "id": 0,
-        "categoria": "Gorras",
-        "detalle": "Gorras de Algon/Poliester",
-        "items": [
-                    {
-                        "nombre": "Gorra Condor",
-                        "talles": ["XS", "S", "M", "L", "XL", "XXL"],
-                        "stock": 100,
-                        "precio": 800,
-                        "url": "./gorraCondor.png"
-                    },
-                    {
-                        "nombre": "Gorra Halcon Peregrino",
-                        "talles": ["XS", "S", "M", "L", "XL", "XXL"],
-                        "stock": 100,
-                        "precio": 800,
-                        "url": "./gorraHalconPeregrino.png"
-                    },
-                    {
-                        "nombre": "Gorra Puma",
-                        "talles": ["XS", "S", "M", "L", "XL", "XXL"],
-                        "stock": 100,
-                        "precio": 800,
-                        "url": "./gorraPuma.png"
-                    },
-                    {
-                        "nombre": "Gorra Serpiente Coral",
-                        "talles": ["XS", "S", "M", "L", "XL", "XXL"],
-                        "stock": 100,
-                        "precio": 800,
-                        "url": "./gorraSerpienteCoral.png"
-                    }
-        ]         
+        "id": 2,
+        "nombre": "Remera Puma",
+        "precio": 1300,
+        "url": "./remeraPuma.png",
+        "stock": 89,
+        "descripcion": "Remera clásica de algodón con estampa de condor, unisex.",
+        "tamannos": ["XS", "S", "M", "L", "XL", "XXL"],
+        "categoria": "remeras" 
     },
     {
-        "id": 0,
-        "categoria": "Buzos",
-        "detalle": "Buzo de Algodon Unisex",
-        "items": [
-                    {
-                        "nombre": "Buzo Condor",
-                        "talles": ["XS", "S", "M", "L", "XL", "XXL"],
-                        "stock": 150,
-                        "precio": 1600,
-                        "url": "./buzoCondor.png"
-                    },
-                    {
-                        "nombre": "Buzo Halcon Peregrino",
-                        "talles": ["XS", "S", "M", "L", "XL", "XXL"],
-                        "stock": 150,
-                        "precio": 1600,
-                        "url": "./buzoHalconPeregrino.png"
-                    },
-                    {
-                        "nombre": "Buzo Puma",
-                        "talles": ["XS", "S", "M", "L", "XL", "XXL"],
-                        "stock": 150,
-                        "precio": 1600,
-                        "url": "./buzoPuma.png"
-                    },
-                    {
-                        "nombre": "Buzo Serpiente Coral",
-                        "talles": ["XS", "S", "M", "L", "XL", "XXL"],
-                        "stock": 150,
-                        "precio": 1600,
-                        "url": "./buzoSerpienteCoral.png"
-                    }
-        ]         
+        "id": 3,
+        "nombre": "Remera Serpiente Coral",
+        "precio": 1270,
+        "url": "./remeraSerpienteCoral.png",
+        "stock": 95,
+        "descripcion": "Remera clásica de algodón con estampa de serpiente coral, unisex.",
+        "tamannos": ["XS", "S", "M", "L", "XL", "XXL"],
+        "categoria": "remeras" 
+    },
+    {
+        "id": 4,
+        "nombre": "Tasa Condor",
+        "precio": 550,
+        "url": "./tasaCondor.png",
+        "stock": 110,
+        "descripcion": "Tasas de Ceramica Frio/Calor con imagen de condor.",
+        "tamannos": ["300ml", "500ml"],
+        "categoria": "tasas"
+    },
+    {
+        "id": 5,
+        "nombre": "Tasa Halcón Peregrino",
+        "precio": 600,
+        "url": "./tasaHalconPeregrino.png",
+        "stock": 105,
+        "descripcion": "Tasas de Ceramica Frio/Calor con imagen de halcón peregrino.",
+        "tamannos": ["300ml", "500ml"],
+        "categoria": "tasas"
+    },
+    {
+        "id": 6,
+        "nombre": "Tasa Puma",
+        "precio": 500,
+        "url": "./tasaPuma.png",
+        "stock": 53,
+        "descripcion": "Tasas de Ceramica Frio/Calor con imagen de puma.",
+        "tamannos": ["300ml", "500ml"],
+        "categoria": "tasas"
+    },
+    {
+        "id": 7,
+        "nombre": "Tasa Serpiente Coral",
+        "precio": 620,
+        "url": "./tasaSerpienteCoral.png",
+        "stock": 78,
+        "descripcion": "Tasas de Ceramica Frio/Calor con imagen de serpiente coral.",
+        "tamannos": ["300ml", "500ml"],
+        "categoria": "tasas"
+    },
+    {
+        "id": 8,
+        "nombre": "Gorra Condor",
+        "precio": 850,
+        "url": "./gorraCondor.png",
+        "stock": 123,
+        "descripcion": "Gorras de Algon/Poliester con estampa de condor.",
+        "tamannos": ["XS", "S", "M", "L", "XL", "XXL"],
+        "categoria": "gorras"
+    },
+    {
+        "id": 9,
+        "nombre": "Gorra Halcon Peregrino",
+        "precio": 870,
+        "url": "./gorraHalconPeregrino.png",
+        "stock": 68,
+        "descripcion": "Gorras de Algon/Poliester con estampa de halcón peregrino.",
+        "tamannos": ["XS", "S", "M", "L", "XL", "XXL"],
+        "categoria": "gorras"
+    },
+    {
+        "id": 10,
+        "nombre": "Gorra Puma",
+        "precio": 800,
+        "url": "./gorraPuma.png",
+        "stock": 74,
+        "descripcion": "Gorras de Algon/Poliester con estampa de puma.",
+        "tamannos": ["XS", "S", "M", "L", "XL", "XXL"],
+        "categoria": "gorras"
+    },
+    {
+        "id": 11,
+        "nombre": "Gorra Serpiente Coral",
+        "precio": 840,
+        "url": "./gorraSerpienteCoral.png",
+        "stock": 120,
+        "descripcion": "Gorras de Algon/Poliester con estampa de serpiente coral.",
+        "tamannos": ["XS", "S", "M", "L", "XL", "XXL"],
+        "categoria": "gorras"
+    },
+    {
+        "id": 12,
+        "nombre": "Buzo Condor",
+        "precio": 1800,
+        "url": "./buzoCondor.png",
+        "stock": 86,
+        "descripcion": "Buzo de Algodón Unisex con estampa de condor.",
+        "tamannos": ["XS", "S", "M", "L", "XL", "XXL"],
+        "categoria": "buzos"
+    },
+    {
+        "id": 13,
+        "nombre": "Buzo Halcón Peregrino",
+        "precio": 1850,
+        "url": "./buzoHalconPeregrino.png",
+        "stock": 100,
+        "descripcion": "Buzo de Algodón Unisex con estampa de halcón peregrino.",
+        "tamannos": ["XS", "S", "M", "L", "XL", "XXL"],
+        "categoria": "buzos"
+    },
+    {
+        "id": 14,
+        "nombre": "Buzo Puma",
+        "precio": 1820,
+        "url": "./buzoPuma.png",
+        "stock": 36,
+        "descripcion": "Buzo de Algodón Unisex con estampa de puma.",
+        "tamannos": ["XS", "S", "M", "L", "XL", "XXL"],
+        "categoria": "buzos"
+    },
+    {
+        "id": 15,
+        "nombre": "Buzo Serpiente Coral",
+        "precio": 1790,
+        "url": "./buzoSerpienteCoral.png",
+        "stock": 48,
+        "descripcion": "Buzo de Algodón Unisex con estampa de serpiente coral.",
+        "tamannos": ["XS", "S", "M", "L", "XL", "XXL"],
+        "categoria": "buzos"
     }
 ]

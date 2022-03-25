@@ -1,8 +1,10 @@
 import React, {useEffect, useState} from "react";
+import {BrowserRouter, Route, Routes} from 'react-router-dom';
 import NavBar from './components/NavBar';
 import ItemListContainer from "./components/ItemListContainer";
 import Header from "./components/Header";
 import NavbarPrincipal from "./components/NavbarPrincipal";
+import ItemDetailContainer from './components/ItemDetailContainer';
 
 localStorage.setItem("cantidad", 0);
 localStorage.setItem("stock", 200);
@@ -12,13 +14,24 @@ localStorage.setItem("stock", 200);
 function App() {
     
     return (
-        <div className="App">
-            <Header />
-            <NavbarPrincipal />
-            <NavBar />
-            <ItemListContainer />
-        </div>
-        
+        <BrowserRouter>
+            <div className="App">
+                <Header />
+                <NavbarPrincipal />
+                <NavBar />
+
+                <Routes>
+                    <Route path='/' element={ <ItemListContainer />}/>
+                    
+                    <Route path='/DetalleItem/:id' element={<ItemDetailContainer/>}/>
+
+                    <Route path="*" element={<h1>Error404</h1>}/>
+                </Routes>
+                
+            </div>
+        </BrowserRouter>
+            
+            
     );
 }
 
