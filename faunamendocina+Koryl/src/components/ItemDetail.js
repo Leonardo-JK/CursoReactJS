@@ -25,6 +25,9 @@ function ItemDetail(props) {
                         )
                     })}
                 </ul>
+                <div className='itemDetail__itemCount'>
+                    <ItemCount id={props.elemento.id}/>
+                </div>
                 
             </div>
         </div>

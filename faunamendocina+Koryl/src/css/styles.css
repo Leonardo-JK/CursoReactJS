@@ -360,5 +360,20 @@ html {
 .itemDetail__tamanno li input {
   margin: 0.5rem;
 }
+.itemDetail__itemCount {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+}
+.itemDetail__itemCount .itemCount {
+  width: 40%;
+  margin-top: 3rem;
+}
+.itemDetail label {
+  color: black;
+}
 
 /*# sourceMappingURL=styles.css.map */

@@ -1,52 +1,53 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import arrowDown from '../img/arrow-down.png';
 
 function NavbarPrincipal() {
     return (
     <div className='navbarP'>
         <ul className='navbarP__list'>
-            <li id='inicio' className='navbarP__inicio'><a href='#'>Inicio</a> 
+            <li id='inicio' className='navbarP__inicio'><Link to='#'>Inicio</Link> 
                 <img src={arrowDown} alt='flecha' />
                 <ul className='navbarP__submenu'>
-                    <li><a href='#'>Presentacion</a></li>
-                    <li><a href='#'>Introduccion</a></li>
+                    <li><Link to='#'>Presentacion</Link></li>
+                    <li><Link to='#'>Introduccion</Link></li>
                 </ul>
             </li>
-            <li id='indice'><a href='#'>Indice</a>
+            <li id='indice'><Link to='#'>Indice</Link>
                 <img src={arrowDown} alt='flecha'/>
                 <ul className='navbarP__submenu'>
-                    <li><a href='#'>Mamíferos</a></li>
-                    <li><a href='#'>Aves</a></li>
-                    <li><a href='#'>Reptiles/Anfibios</a></li>
-                    <li><a href='#'>Insectos</a></li>
-                    <li><a href='#'>Peces</a></li>
+                    <li><Link to='#'>Mamíferos</Link></li>
+                    <li><Link to='#'>Aves</Link></li>
+                    <li><Link to='#'>Reptiles/Anfibios</Link></li>
+                    <li><Link to='#'>Insectos</Link></li>
+                    <li><Link to='#'>Peces</Link></li>
                 </ul>
             </li>
-            <li id='galeria'><a href='#'>Galería</a> 
+            <li id='galeria'><Link to='#'>Galería</Link> 
                 <img src={arrowDown} alt='flecha'/>
                 <ul className='navbarP__submenu'>
-                <li><a href='#'>Mamíferos</a></li>
-                    <li><a href='#'>Aves</a></li>
-                    <li><a href='#'>Reptiles/Anfibios</a></li>
-                    <li><a href='#'>Insectos</a></li>
-                    <li><a href='#'>Peces</a></li>
+                <li><Link to='#'>Mamíferos</Link></li>
+                    <li><Link to='#'>Aves</Link></li>
+                    <li><Link to='#'>Reptiles/Anfibios</Link></li>
+                    <li><Link to='#'>Insectos</Link></li>
+                    <li><Link to='#'>Peces</Link></li>
                 </ul>
             </li>
-            <li id='tablas'><a href='#'>Tablas</a> 
+            <li id='tablas'><Link to='#'>Tablas</Link> 
                 
             </li>
-            <li id='juegos'><a href='#'>Juegos</a> 
+            <li id='juegos'><Link to='#'>Juegos</Link> 
                 
             </li>
-            <li id='tienda'><a href='#'>Tienda</a> 
+            <li id='tienda'><Link to='/'>Tienda</Link> 
                 
             </li>
-            <li id='contacto'><a href='#'>Contacto</a> 
+            <li id='contacto'><Link to='#'>Contacto</Link> 
                 <img src={arrowDown} alt='flecha'/>
                 <ul className='navbarP__submenu'>
-                    <li><a href='#'>Nuestras Redes</a></li>
-                    <li><a href='#'>ONG's</a></li>
-                    <li><a href='#'>Contactanos</a></li>
+                    <li><Link to='#'>Nuestras Redes</Link></li>
+                    <li><Link to='#'>ONG's</Link></li>
+                    <li><Link to='#'>Contactanos</Link></li>
                 </ul>
             </li>
         </ul>

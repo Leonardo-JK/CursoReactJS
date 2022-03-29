@@ -417,4 +417,22 @@ html {
             }
         }
     }
+
+    &__itemCount{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        width: 100%;
+
+        .itemCount{
+            width: 40%;
+            margin-top: 3rem;
+        }
+    }
+
+    label{
+        color: black;
+    }
 }
