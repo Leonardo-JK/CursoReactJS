@@ -33,7 +33,9 @@ function ItemListContainer(props) {
             {info ? 
                     <div className='products__list'>
                         <h2 className='products__title'>Catálogo</h2>
-                        <ItemList elementos={info} />
+                        <ItemList 
+                            elementos={info} 
+                        />
                     </div>
                 
                     : <h1 className='carga'>Cargando...</h1>

@@ -1,15 +1,10 @@
-import React, {useEffect, useState} from "react";
+import React from "react";
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
 import NavBar from './components/NavBar';
 import ItemListContainer from "./components/ItemListContainer";
 import Header from "./components/Header";
 import NavbarPrincipal from "./components/NavbarPrincipal";
 import ItemDetailContainer from './components/ItemDetailContainer';
-
-localStorage.setItem("cantidad", 0);
-localStorage.setItem("stock", 200);
-
-
 
 function App() {
     

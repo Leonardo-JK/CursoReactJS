@@ -5,8 +5,7 @@ import ItemCount from './ItemCount';
 const cargarImagen = require.context("./../img", true);
 
 function Item(props) {
-    let nameStock = "stock" + props.id;
-    localStorage.setItem(nameStock, props.stock)
+    
     return (
         <div className='items'>
             <div className='items__item'>
@@ -21,9 +20,6 @@ function Item(props) {
                         <p>{props.itemName}</p>
                     </div>
                 </Link>
-                <div className='items__compra'>
-                    <ItemCount id={props.id}/>
-                </div>
             </div>
         </div>
     )

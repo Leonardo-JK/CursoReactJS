@@ -375,5 +375,21 @@ html {
 .itemDetail label {
   color: black;
 }
+.itemDetail__terminar {
+  text-align: center;
+  width: 10rem;
+  margin-top: 2rem;
+}
+.itemDetail__terminar button {
+  margin-top: 0.5rem;
+  background-color: #acccd4;
+  padding: 1rem 1.2rem;
+  border-radius: 0.5rem;
+  color: azure;
+}
+.itemDetail__terminar button a {
+  text-decoration: none;
+  color: azure;
+}
 
 /*# sourceMappingURL=styles.css.map */

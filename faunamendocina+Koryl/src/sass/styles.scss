@@ -435,4 +435,23 @@ html {
     label{
         color: black;
     }
+
+    &__terminar{
+        text-align: center;
+        width: 10rem;
+        margin-top: 2rem;
+
+        button{
+            margin-top: 0.5rem;
+            background-color: rgb(172, 204, 212);
+            padding: 1rem 1.2rem;
+            border-radius: 0.5rem;
+            color: azure;
+
+            a{
+                text-decoration: none;
+                color: azure;
+            }
+        }
+    }
 }
