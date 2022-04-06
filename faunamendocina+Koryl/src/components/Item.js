@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import ItemCount from './ItemCount';
 
 const cargarImagen = require.context("./../img", true);
 

@@ -1,38 +1,76 @@
-import React, {useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {Link} from 'react-router-dom';
+import { CartContext } from '../contexts/CartContext';
 import ItemCount from './ItemCount';
 
 const cargarImagen = require.context("./../img", true);
 
 function ItemDetail(props) {
-    console.log(props.elemento);
-    console.log(props.elemento.stock);
 
     let [stock, setStock] = useState(JSON.parse(props.elemento.stock));
     let [cant, setCant] = useState(1);
     let [taman, setTaman] = useState("");
-    let [cantCart, setCantCart] = useState(0);
-    console.log(stock);
+    let [state, setState] = useState(true);
+    let {cart, addItem, isInCart, isTamId} = useContext(CartContext);
 
+    let aux = cart;
+    let inAux = 0;
+    let inTam = 0;
+    let isId = false;
+    let isTam = false;
+
+    if(taman !== "" && state === true){
+        setState(false);
+    }
+        
     function agregar(){
-        setStock(stock - cant);
-        localStorage.setItem(("stock" + props.elemento.id), JSON.stringify(stock));
+        
+        const item = {
+            id: props.elemento.id,
+            unidades: [{
+                        tamanno: taman,
+                        cantidad: parseInt(cant),
+                    }],
+            nombre: props.elemento.nombre,
+            precio: props.elemento.precio,
+            imagen: props.elemento.url
+        }
+
+        inAux = isInCart(item.id, aux)[0];
+        isId = isInCart(item.id, aux)[1];
+
+        if(isId){
+            inTam = isTamId(aux[inAux].unidades, taman)[0];
+            isTam = isTamId(aux[inAux].unidades, taman)[1];
+            console.log(isTam);
+            if(isTam){
+                console.log(inTam);
+                aux[inAux].unidades[inTam].cantidad = aux[inAux].unidades[inTam].cantidad + parseInt(cant);
+                if(aux[inAux].unidades[inTam].cantidad > props.elemento.stock){
+                    aux[inAux].unidades[inTam].cantidad = props.elemento.stock;
+                    setState(true);
+                }
+            } else {
+                aux[inAux].unidades.push({tamanno: taman, cantidad: parseInt(cant)});
+            }
+        } else {
+            aux.push(item);
+        }
+
+        console.log(aux);
+        addItem(aux);
+        console.log(cart);
+        
         setCant(1);
-        if((stock - cant) === 0){
+        if((stock - cant) === 0 || cant === 0){
             setCant(0);
         }
-        setCantCart(JSON.parse(cantCart) + JSON.parse(cant));
-        console.log("suma " + cantCart);
-        console.log(taman);
-
-
     }
-
 
     return (
         <div className='itemDetail'>
             <div className='itemDetail__img'>
-                <img src={cargarImagen(`${props.elemento.url}`)} alt={props.elemento.alt} />
+                <img src={cargarImagen(`${props.elemento.url}`)} alt={props.elemento.nombre} />
             </div>
             <div className='itemDetail__info'>
                 <h2 className='itemDetail__title'>{props.elemento.nombre}</h2>
@@ -43,6 +81,7 @@ function ItemDetail(props) {
                 <p className='itemDetail__precio'>$ {props.elemento.precio}<sup>00</sup></p>
                 <hr/>
                 <select onChange={(e) => {setTaman(e.target.value)}}>
+                    <option value={""} selected={true} disabled={true}>Elija el tamaño</option>
                     {props.elemento.tamannos.map((tam) => {
                         return (
                             <option value={tam}>{tam}</option>
@@ -56,6 +95,7 @@ function ItemDetail(props) {
                         cantidad={cant}
                         setCant={setCant}
                         stock={stock}
+                        state={state}
                     />
                 </div>
                 <div className='itemDetail__terminar'>

@@ -5,7 +5,6 @@ import {useParams} from 'react-router-dom';
 function ItemDetailContainer() {
     let [item, setItem] = useState(false);
     const id = parseInt(useParams().id);
-    console.log(id);
 
     const datos = new Promise((resolve, reject) => {
         setTimeout(function(){
@@ -16,8 +15,7 @@ function ItemDetailContainer() {
     });
         
     datos.then((respuesta) => {
-        setItem(respuesta[0]); 
-        console.log(respuesta);
+        setItem(respuesta[0]);
         });
 
     return (
