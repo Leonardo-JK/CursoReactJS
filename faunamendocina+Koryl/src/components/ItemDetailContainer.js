@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import ItemDetail from './ItemDetail';
 import {useParams} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 
 function ItemDetailContainer() {
     let [item, setItem] = useState(false);
@@ -21,7 +22,13 @@ function ItemDetailContainer() {
     return (
         <div className='detalles'>
             {item 
-                ?   <ItemDetail elemento={item}/>
+                ?   
+                    <div className='detalles__div'>
+                        <div className='detalles__button'>
+                            <button className='seguir'><Link to='/'>Seguir comprando</Link></button>
+                        </div>
+                        <ItemDetail elemento={item}/>
+                    </div>
                 :   <h1 className='carga'>Cargando...</h1>
             }
         </div>

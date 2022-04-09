@@ -1,7 +1,7 @@
 import React, {useContext, useEffect, useState} from 'react';
-import {Link} from 'react-router-dom';
 import { CartContext } from '../contexts/CartContext';
 import ItemCount from './ItemCount';
+import {Link} from 'react-router-dom';
 
 const cargarImagen = require.context("./../img", true);
 
@@ -11,7 +11,7 @@ function ItemDetail(props) {
     let [cant, setCant] = useState(1);
     let [taman, setTaman] = useState("");
     let [state, setState] = useState(true);
-    let {cart, addItem, isInCart, isTamId} = useContext(CartContext);
+    let {cart, addItem, isInCart, isTamId, mostrar, cantUn} = useContext(CartContext);
 
     let aux = cart;
     let inAux = 0;
@@ -42,9 +42,7 @@ function ItemDetail(props) {
         if(isId){
             inTam = isTamId(aux[inAux].unidades, taman)[0];
             isTam = isTamId(aux[inAux].unidades, taman)[1];
-            console.log(isTam);
             if(isTam){
-                console.log(inTam);
                 aux[inAux].unidades[inTam].cantidad = aux[inAux].unidades[inTam].cantidad + parseInt(cant);
                 if(aux[inAux].unidades[inTam].cantidad > props.elemento.stock){
                     aux[inAux].unidades[inTam].cantidad = props.elemento.stock;
@@ -57,15 +55,20 @@ function ItemDetail(props) {
             aux.push(item);
         }
 
-        console.log(aux);
         addItem(aux);
-        console.log(cart);
         
         setCant(1);
         if((stock - cant) === 0 || cant === 0){
             setCant(0);
         }
+        mostrar();
     }
+
+    useEffect(() => {
+
+    }, [cart])
+
+    console.log(cart);
 
     return (
         <div className='itemDetail'>
@@ -80,26 +83,30 @@ function ItemDetail(props) {
                 <hr/>
                 <p className='itemDetail__precio'>$ {props.elemento.precio}<sup>00</sup></p>
                 <hr/>
-                <select onChange={(e) => {setTaman(e.target.value)}}>
-                    <option value={""} selected={true} disabled={true}>Elija el tamaño</option>
-                    {props.elemento.tamannos.map((tam) => {
-                        return (
-                            <option value={tam}>{tam}</option>
-                        )
-                    })}
-                </select>
-                <div className='itemDetail__itemCount'>
-                    <ItemCount 
-                        id={props.elemento.id} 
-                        onAdd={agregar}
-                        cantidad={cant}
-                        setCant={setCant}
-                        stock={stock}
-                        state={state}
-                    />
-                </div>
-                <div className='itemDetail__terminar'>
-                    <button className='itemDetail__terminarButton'><Link id='terminar' to='/cart'>Terminar Compra</Link ></button>
+                <div className='itemDetail__compra'>
+                    <div className='itemDetail__select'>
+                        <select className='itemDetail__tamanno' onChange={(e) => {setTaman(e.target.value)}}>
+                            <option value={""} selected={true} disabled={true}>Elija el tamaño</option>
+                            {props.elemento.tamannos.map((tam) => {
+                                return (
+                                    <option value={tam}>{tam}</option>
+                                )
+                            })}
+                        </select>
+                        <div className='itemDetail__itemCount'>
+                            <ItemCount 
+                                id={props.elemento.id} 
+                                onAdd={agregar}
+                                cantidad={cant}
+                                setCant={setCant}
+                                stock={stock}
+                                state={state}
+                            />
+                        </div>
+                    </div>
+                    <div className='itemDetail__terminar'>
+                        <button className='itemDetail__terminarButton'><Link id='terminar' to='/cart'>Terminar Compra</Link ></button>
+                    </div>
                 </div>
             </div>
         </div>

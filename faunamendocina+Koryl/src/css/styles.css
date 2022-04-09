@@ -167,7 +167,6 @@ html {
 }
 
 .cartWidget {
-  display: flex;
   align-items: center;
   justify-content: center;
   height: 100%;
@@ -180,16 +179,16 @@ html {
   height: 100%;
 }
 .cartWidget__number {
-  display: none;
+  display: block;
   position: absolute;
-  width: 1.25rem;
-  height: 1.25rem;
-  padding-bottom: 1rem;
+  min-width: 1.5rem;
+  height: 1.5rem;
+  padding: 0.1rem 0.25rem 0rem 0.25rem;
   text-align: center;
   color: white;
   background-color: green;
   border: 0px solid green;
-  border-radius: 0.5rem;
+  border-radius: 0.75rem;
   top: 0;
   right: 0;
   border: 1px solid;
@@ -197,6 +196,7 @@ html {
 
 .products {
   width: 100%;
+  min-height: 100vh;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -295,20 +295,33 @@ html {
 
 .detalles {
   width: 100%;
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   background-image: url("../img/fondo1.jpg");
+}
+.detalles__div {
+  width: 70%;
+}
+.detalles__button {
+  display: flex;
+  justify-content: end;
+}
+.detalles__button button {
+  margin: 2rem 4rem 0 0;
 }
 
 .itemDetail {
   display: flex;
   justify-content: space-between;
-  width: 70%;
+  width: 100%;
+  max-height: 70vh;
   margin-top: 2rem;
   background-color: #535252;
   border: 1px solid;
 }
 .itemDetail__img {
+  width: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -317,18 +330,23 @@ html {
   background-color: #d8d8d8;
   border: 1px solid;
 }
+.itemDetail__img img {
+  width: 85%;
+  margin-top: 3rem;
+}
 .itemDetail__info {
+  width: 50%;
   display: flex;
   flex-direction: column;
   align-content: center;
-  margin: 2rem;
-  padding: 2rem;
+  margin: 0rem;
+  padding: 0rem;
   color: azure;
 }
 .itemDetail__title {
   font-size: 3rem;
   margin-bottom: 1rem;
-  margin-top: 1rem;
+  margin-top: 3rem;
 }
 .itemDetail__descrip {
   font-size: 2rem;
@@ -344,21 +362,24 @@ html {
   font-size: 4rem;
   margin-bottom: 3rem;
   margin-top: 1rem;
+  text-align: center;
 }
 .itemDetail__precio sup {
   font-size: 1.5rem;
 }
-.itemDetail__tamanno {
-  list-style: none;
+.itemDetail__compra {
   display: flex;
-  justify-content: space-around;
+}
+.itemDetail__select {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.itemDetail__tamanno {
   margin-top: 1rem;
-}
-.itemDetail__tamanno li {
-  width: 4rem;
-}
-.itemDetail__tamanno li input {
-  margin: 0.5rem;
+  width: 60%;
+  text-align: center;
 }
 .itemDetail__itemCount {
   display: flex;
@@ -369,15 +390,15 @@ html {
   width: 100%;
 }
 .itemDetail__itemCount .itemCount {
-  width: 40%;
-  margin-top: 3rem;
+  width: 60%;
+  margin-top: 1rem;
 }
 .itemDetail label {
   color: black;
 }
 .itemDetail__terminar {
   text-align: center;
-  width: 10rem;
+  width: 50%;
   margin-top: 2rem;
 }
 .itemDetail__terminar button {
@@ -390,6 +411,89 @@ html {
 .itemDetail__terminar button a {
   text-decoration: none;
   color: azure;
+}
+
+.table {
+  background-image: url("../img/fondo1.jpg");
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-items: center;
+}
+.table__td {
+  justify-content: center;
+  text-align: center;
+  font-size: 1.5rem;
+}
+.table__td img {
+  width: 5rem;
+  margin: 1rem;
+}
+.table__list {
+  width: 90%;
+}
+.table__first {
+  width: 90%;
+  border-spacing: 0px;
+  padding: 0px;
+  margin-top: 3rem;
+}
+.table__second {
+  width: 100%;
+  height: 3rem;
+  border-spacing: 0rem;
+  padding: 2rem 0rem;
+  border: none;
+}
+.table__second tr, .table__second th, .table__second td {
+  border: 1px solid transparent;
+  padding: 0.5rem 0rem;
+}
+.table__head {
+  height: 3rem;
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+}
+.table__col2 {
+  width: 10rem;
+}
+.table__colT1 {
+  font-size: 2rem;
+  text-align: end;
+  padding-right: 5rem;
+}
+.table__colT2 {
+  font-size: 2rem;
+  text-align: center;
+}
+.table__delete {
+  background-color: #e22929;
+  color: white;
+  padding: 0.2rem;
+  border-radius: 5px;
+  box-shadow: 3px 3px 5px grey;
+}
+.table__desc {
+  font-size: 1.5rem;
+}
+.table__carga {
+  margin: 5rem;
+}
+
+.seguir {
+  display: block;
+  height: 2rem;
+  border-radius: 1rem;
+  background-color: #acccd4;
+}
+.seguir a {
+  text-decoration: none;
+  color: azure;
+  font-size: 1.5rem;
+  padding: 1.5rem;
 }
 
 /*# sourceMappingURL=styles.css.map */

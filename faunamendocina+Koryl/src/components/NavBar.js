@@ -1,8 +1,16 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import {Link} from 'react-router-dom';
 import CartWidget from './CartWidget';
+import { CartContext } from '../contexts/CartContext';
 
-function NavBar (props){
+function NavBar (){
+
+    let {vista} = useContext(CartContext);
+
+    useEffect(() => {
+
+    }, [vista]);
+
     return (
         <div className='navbar'>
             <div className='navbar__filtros'>
@@ -16,9 +24,17 @@ function NavBar (props){
                     <li><Link id='buzos' to='/category/buzos'>BUZOS</Link></li>
                 </ul>
             </div>
-            <div className='navbar__cart'>
-                <CartWidget />
-            </div>
+            {vista ?
+                    <div className='navbar__cart'>
+                        <CartWidget />
+                    </div>
+
+                    :
+                    <div className='navbar__cart'>
+                    </div>
+            }
+            
+            
         </div>
     );
 }
