@@ -44,6 +44,15 @@ function Cart(){
     //     ]
     // );
 
+    useEffect(() => {
+        if(cartTable.length !== 0){
+            setInfo(true);
+        } else {
+            setInfo(false);
+            setUn(0);
+        }
+    }, [cartTable, cart]);
+
     function suma(){
         let sum = 0;
 
@@ -55,15 +64,6 @@ function Cart(){
 
         return sum;
     }
-
-    useEffect(() => {
-        if(cartTable.length !== 0){
-            setInfo(true);
-        } else {
-            setInfo(false);
-            setUn(0);
-        }
-    }, [cartTable])
 
     function borrar(i, j) {
         let aux = cart;
@@ -79,8 +79,8 @@ function Cart(){
         if(aux[indexId(i)].unidades.length === 0){
             aux.splice(indexId(i),1);
         }
-        setCartTable(aux);
         removeItem(aux);
+        setCartTable(cart);
     }
 
     function indexId(id){
@@ -133,7 +133,7 @@ function Cart(){
                                                         <td className='table__col2 table__td'>$ {item.precio}</td>
                                                         <td className='table__col2 table__td'>$ {item.precio * un.cantidad}</td>
                                                         <td className='table__col2 table__td'>
-                                                            <button className='table__delete'>Eliminar Item</button>
+                                                            <button className='table__delete' onClick={() => borrar(item.id, un.tamanno)}>Eliminar Item</button>
                                                         </td>
                                                     </tr>
                                                 )
