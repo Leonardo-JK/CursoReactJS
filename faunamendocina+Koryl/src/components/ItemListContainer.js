@@ -1,33 +1,36 @@
 import React, {useEffect, useState} from 'react';
 import { useParams } from 'react-router-dom';
 import ItemList from './ItemList';
+import {collection, getDocs } from 'firebase/firestore';
+import { db } from '../firebase/config';
 
-function ItemListContainer(props) {
+
+function ItemListContainer() {
     let [info, setInfo] = useState(false);
-    
+    let items;
     const {categoryid} = useParams();
     console.log(categoryid);
 
     useEffect(() => {
         setInfo(false);
-
-        const datos = new Promise((resolve, reject) => {
-            setTimeout(function(){
-                if(categoryid){
-                    resolve(require('../data/stock.json').filter((cat) => cat.categoria === categoryid))
-                } else{
-                    resolve(require('../data/stock.json'));
-                }
-            }, 2000);
-        });
-            
-        datos.then((respuesta) => {
-            setInfo(respuesta);
-            console.log(respuesta);
-            });
+        
+        const prodRef = collection(db, "items");
+        getDocs(prodRef)
+            .then(resp => {
+                items = resp.docs.map((doc) => ({id: doc.id, ...doc.data()}));
+                console.log(items);
+                setInfo(items);
+                
+            })
+            // .finally(() => {
+            //     if(categoryid){
+            //         setInfo(items.filter((cat) => cat.categoria === categoryid));
+            //     } else{
+            //         setInfo(items);
+            //     }   
+            // }) 
     }, [categoryid])
     
-
     return (
         <div className='products'>
             {info ? 

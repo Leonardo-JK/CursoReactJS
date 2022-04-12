@@ -8,6 +8,7 @@ function Cart(){
     let {cart, removeItem, setUn} = useContext(CartContext);
     let [cartTable, setCartTable] = useState(cart);
     let [info, setInfo] = useState(false);
+    console.log(cart);
     //     [
     //         {
     //             "id":2,
@@ -66,7 +67,15 @@ function Cart(){
 
     function borrar(i, j) {
         let aux = cart;
-        aux[indexId(i)].unidades.splice(indexTam(j),1);
+        console.log(aux);
+        console.log(i);
+        console.log(j);
+        console.log(indexId(i));
+        console.log(indexTam(indexId(i),j));
+        console.log(aux[indexId(i)]);
+        console.log(aux[indexId(i)].unidades);
+        
+        aux[indexId(i)].unidades.splice(indexTam(indexId(i),j),1);
         if(aux[indexId(i)].unidades.length === 0){
             aux.splice(indexId(i),1);
         }

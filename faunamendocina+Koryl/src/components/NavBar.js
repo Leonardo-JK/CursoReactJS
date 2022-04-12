@@ -18,8 +18,8 @@ function NavBar (){
             </div>
             <div id='menu' className='navbar__menu'>
                 <ul>
-                    <li><Link id='remeras' to='/category/tasas'>TASAS</Link ></li>
-                    <li><Link id='tasas' to='/category/remeras'>REMERAS</Link></li>
+                    <li><Link id='tasas' to='/category/tasas'>TASAS</Link ></li>
+                    <li><Link id='remeras' to='/category/remeras'>REMERAS</Link></li>
                     <li><Link id='gorras' to='/category/gorras'>GORRAS</Link></li>
                     <li><Link id='buzos' to='/category/buzos'>BUZOS</Link></li>
                 </ul>

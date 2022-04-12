@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const cargarImagen = require.context("./../img", true);
 
 function Item(props) {
-    
+    console.log(props.id);
     return (
         <div className='items'>
             <div className='items__item'>

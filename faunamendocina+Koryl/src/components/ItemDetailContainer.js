@@ -1,23 +1,37 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import ItemDetail from './ItemDetail';
 import {useParams} from 'react-router-dom';
 import {Link} from 'react-router-dom';
+import { doc, getDoc } from 'firebase/firestore';
+import { db } from '../firebase/config';
 
 function ItemDetailContainer() {
     let [item, setItem] = useState(false);
-    const id = parseInt(useParams().id);
+    const {id} = useParams();
+    let prod;
 
-    const datos = new Promise((resolve, reject) => {
-        setTimeout(function(){
-            const aux = require('../data/stock.json');
-            
-            resolve(aux.filter((elemento) => elemento.id === id));
-        }, 2000);
-    });
-        
-    datos.then((respuesta) => {
-        setItem(respuesta[0]);
-        });
+    useEffect(() => {
+        const docRef = doc(db, "items", id);
+        console.log(docRef);
+        getDoc(docRef)
+            .then(doc => {
+                prod = {id: doc.id, ...doc.data()};
+                console.log(doc);
+                console.log(prod.id);
+            })
+            .finally(() => {
+                setItem(prod);
+            })
+
+    }, [id]);
+
+    // const prodRef = collection(db, "items");
+    //     getDocs(prodRef)
+    //         .then(resp => {
+    //             const aux = resp.docs.map((doc) => ({id: doc.id, ...doc.data()}));
+    //             console.log(aux);
+    //             setItem(aux.filter((elemento) => elemento.id === id)[0]);
+    //         })
 
     return (
         <div className='detalles'>
