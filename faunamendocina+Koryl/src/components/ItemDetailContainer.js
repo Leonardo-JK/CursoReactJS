@@ -25,14 +25,6 @@ function ItemDetailContainer() {
 
     }, [id]);
 
-    // const prodRef = collection(db, "items");
-    //     getDocs(prodRef)
-    //         .then(resp => {
-    //             const aux = resp.docs.map((doc) => ({id: doc.id, ...doc.data()}));
-    //             console.log(aux);
-    //             setItem(aux.filter((elemento) => elemento.id === id)[0]);
-    //         })
-
     return (
         <div className='detalles'>
             {item 
