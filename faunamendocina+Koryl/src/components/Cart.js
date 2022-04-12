@@ -5,9 +5,7 @@ import {Link} from 'react-router-dom';
 const imagen = require.context("./../img", true);
 
 function Cart(){
-    let {cart, removeItem, setUn} = useContext(CartContext);
-    let [cartTable, setCartTable] = useState(cart);
-    let [info, setInfo] = useState(false);
+    let {cart, removeItem, cantUn, setUn, clear} = useContext(CartContext);
     console.log(cart);
     //     [
     //         {
@@ -45,64 +43,23 @@ function Cart(){
     // );
 
     useEffect(() => {
-        if(cartTable.length !== 0){
-            setInfo(true);
-        } else {
-            setInfo(false);
+        if(cart.length === 0){
             setUn(0);
-        }
-    }, [cartTable, cart]);
-
-    function suma(){
-        let sum = 0;
-
-        for(let i = 0; i < cartTable.length; i++){
-            for(let j = 0; j <cartTable[i].unidades.length; j++){
-                sum += cartTable[i].unidades[j].cantidad * cartTable[i].precio;
-            }
-        }
-
-        return sum;
-    }
-
-    function borrar(i, j) {
-        let aux = cart;
-        console.log(aux);
-        console.log(i);
-        console.log(j);
-        console.log(indexId(i));
-        console.log(indexTam(indexId(i),j));
-        console.log(aux[indexId(i)]);
-        console.log(aux[indexId(i)].unidades);
-        
-        aux[indexId(i)].unidades.splice(indexTam(indexId(i),j),1);
-        if(aux[indexId(i)].unidades.length === 0){
-            aux.splice(indexId(i),1);
-        }
-        removeItem(aux);
-        setCartTable(cart);
-    }
-
-    function indexId(id){
-        for(let i = 0; i < cartTable.length; i++){
-            if(cartTable[i].id === id){
-                return i;
-            }
-        }
-    }
-
-    function indexTam(ind, tam){
-        console.log(cartTable);
-        for(let i = 0; i < cartTable[ind].unidades.length; i++){
-            if(cartTable[ind].unidades[i].tamanno === tam){
-                return i;
-            }
-        }
-    }
+        } 
+    }, [cart]);
 
     return (
         <div className='table'>
-            {info
+            <div className='botones'>
+                <div>
+                    <button className='seguir'><Link to='/'>Seguir comprando</Link></button>
+                </div>
+                <div>
+                    <button className='vaciar' onClick={() => clear()}>Vaciar Carrito</button>
+                </div>
+            </div>
+            
+            {cart
             
                 ?
                 <div className='table__list'>
@@ -117,7 +74,7 @@ function Cart(){
                             <td className='table__col2'>Subtotal<hr/></td>
                             <td className='table__col2'></td>
                         </tr>
-                        {cartTable.map((item) => {
+                        {cart.map((item) => {
                             return (
                                 <tr>
                                     <td className='table__td'>{item.id}</td>
@@ -133,7 +90,7 @@ function Cart(){
                                                         <td className='table__col2 table__td'>$ {item.precio}</td>
                                                         <td className='table__col2 table__td'>$ {item.precio * un.cantidad}</td>
                                                         <td className='table__col2 table__td'>
-                                                            <button className='table__delete' onClick={() => borrar(item.id, un.tamanno)}>Eliminar Item</button>
+                                                            <button className='table__delete' onClick={() => removeItem(item.id, un.tamanno)}>Eliminar Item</button>
                                                         </td>
                                                     </tr>
                                                 )
@@ -147,16 +104,15 @@ function Cart(){
                         <tr><td colSpan={7}><hr/></td></tr>
                         <tr >
                             <td className='table__colT1' colSpan={6}>TOTAL</td>
-                            <td className='table__colT2'>$ {suma()}</td>
+                            <td className='table__colT2'>$ {cantUn()}</td>
                         </tr>       
                     </table>      
                 </div>    
                 :
                 <h1 className='table__carga'>El carrito esta vacio</h1> 
             }
-            <div>
-                <button className='seguir'><Link to='/'>Seguir comprando</Link></button>
-            </div>
+            
+            
             
         </div>
     )    
