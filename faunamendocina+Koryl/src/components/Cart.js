@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom';
 const imagen = require.context("./../img", true);
 
 function Cart(){
-    let {cart, removeItem, cantUn, setUn, clear} = useContext(CartContext);
+    let {cart, removeItem, total, setUn, clear} = useContext(CartContext);
     console.log(cart);
     //     [
     //         {
@@ -65,8 +65,8 @@ function Cart(){
                 <div className='table__list'>
                     <table className='table__first'>
                         <tr className='table__head'>
-                            <td>#id<hr/></td>
                             <td>Item<hr/></td>
+                            <td>Producto<hr/></td>
                             <td>Descripcion<hr/></td>
                             <td className='table__col2'>Cantidad<hr/></td>
                             <td className='table__col2'>Tamaño<hr/></td>
@@ -77,7 +77,7 @@ function Cart(){
                         {cart.map((item) => {
                             return (
                                 <tr>
-                                    <td className='table__td'>{item.id}</td>
+                                    <td className='table__td'>#{cart.indexOf(item) + 1}</td>
                                     <td className='table__td'><img src={imagen(`${item.imagen}`)} alt={item.nombre} /></td>
                                     <td className='table__desc'>{item.nombre}</td>
                                     <td className='table__td' colSpan={5}>
@@ -98,13 +98,14 @@ function Cart(){
                                         </table>
                                     </td>
                                     <tr/>
-                                </tr>                            
+                                    <hr/>
+                                </tr>                                                                                          
                             )
                         })} 
                         <tr><td colSpan={7}><hr/></td></tr>
                         <tr >
                             <td className='table__colT1' colSpan={6}>TOTAL</td>
-                            <td className='table__colT2'>$ {cantUn()}</td>
+                            <td className='table__colT2'>$ {total()}</td>
                         </tr>       
                     </table>      
                 </div>    

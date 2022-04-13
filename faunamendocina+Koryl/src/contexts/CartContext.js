@@ -19,7 +19,18 @@ export const CartProvider = ({children}) => {
         }
         console.log(suma);
         return suma;
-    }  
+    }
+    
+    const total = () => {
+        let suma = 0;
+        for(let i = 0; i < cart.length; i++){
+            for(let j = 0; j < cart[i].unidades.length; j++){
+                suma += (parseInt(cart[i].unidades[j].cantidad) * parseInt(cart[i].precio));
+            }
+        }
+        console.log(suma);
+        return suma;
+    }
 
     const addItem = (array) => {
         setCart(array);
@@ -28,34 +39,22 @@ export const CartProvider = ({children}) => {
     }
 
     const removeItem = (i, j) => {
-        let aux = cart;
-        aux[indexId(i)].unidades.splice(indexTam(indexId(i),j),1);
-        if(aux[indexId(i)].unidades.length === 0){
-            aux.splice(indexId(i),1);
-        }
-        setCart(aux);
-        if(cart.length === 0){
-            setUn(0);
-            setVista(false);
-        }
-        console.log(cart);
-    }
 
-    function indexId(id){
-        for(let i = 0; i < cart.length; i++){
-            if(cart[i].id === id){
-                return i;
-            }
-        }
-    }
+        let newCart;
+        let productDel = cart.find((item) => item.id === i)
 
-    function indexTam(ind, tam){
-        console.log(cart);
-        for(let i = 0; i < cart[ind].unidades.length; i++){
-            if(cart[ind].unidades[i].tamanno === tam){
-                return i;
-            }
+        if (productDel.unidades.length > 0) {
+            let unidadesNew = productDel.unidades.filter(uni => uni.tamanno !== j)
+            productDel.unidades = unidadesNew
+
+            newCart = cart.map((item) => item.id === i ? (item = productDel) : item)
         }
+
+        if (productDel.unidades.length === 0) {
+            newCart = cart.filter(item => item.id !== i)
+        }
+
+        setCart(newCart)
     }
 
     const isInCart = (num, array) => {
@@ -108,7 +107,8 @@ export const CartProvider = ({children}) => {
             isInCart, 
             isTamId, 
             mostrar, 
-            clear
+            clear, 
+            total
         }}>
             {children}
         </CartContext.Provider>
