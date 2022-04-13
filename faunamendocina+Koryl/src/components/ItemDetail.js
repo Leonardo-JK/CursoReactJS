@@ -105,7 +105,7 @@ function ItemDetail(props) {
                         </div>
                     </div>
                     <div className='itemDetail__terminar'>
-                        <button className='itemDetail__terminarButton'><Link id='terminar' to='/cart'>Terminar Compra</Link ></button>
+                    <Link id='terminar' to='/cart'><button className='itemDetail__terminarButton'>Terminar Compra</button></Link >
                     </div>
                 </div>
             </div>

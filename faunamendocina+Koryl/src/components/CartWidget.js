@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useState} from 'react';
+import React, {useContext} from 'react';
 import logoCarrito from "../img/logoCarrito.png";
 import { CartContext } from '../contexts/CartContext';
 

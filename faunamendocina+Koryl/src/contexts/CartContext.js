@@ -34,6 +34,10 @@ export const CartProvider = ({children}) => {
             aux.splice(indexId(i),1);
         }
         setCart(aux);
+        if(cart.length === 0){
+            setUn(0);
+            setVista(false);
+        }
         console.log(cart);
     }
 
@@ -88,6 +92,8 @@ export const CartProvider = ({children}) => {
 
     const clear = () => {
         setCart([])
+        setUn(0);
+        setVista(false);
     }
 
     return (

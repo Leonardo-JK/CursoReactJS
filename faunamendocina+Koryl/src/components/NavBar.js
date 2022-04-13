@@ -9,7 +9,7 @@ function NavBar (){
 
     useEffect(() => {
 
-    }, [vista]);
+    },[vista]);
 
     return (
         <div className='navbar'>

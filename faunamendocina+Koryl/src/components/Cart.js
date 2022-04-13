@@ -59,7 +59,7 @@ function Cart(){
                 </div>
             </div>
             
-            {cart
+            {cart.length !==0
             
                 ?
                 <div className='table__list'>
