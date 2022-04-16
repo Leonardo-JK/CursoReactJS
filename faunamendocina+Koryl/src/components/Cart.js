@@ -107,7 +107,10 @@ function Cart(){
                             <td className='table__colT1' colSpan={6}>TOTAL</td>
                             <td className='table__colT2'>$ {total()}</td>
                         </tr>       
-                    </table>      
+                    </table>   
+                    <div className='botones2'>
+                        <button className='procesar'><Link to='/checkout'>Procesar la Compra</Link></button>
+                    </div>   
                 </div>    
                 :
                 <h1 className='table__carga'>El carrito esta vacio</h1> 

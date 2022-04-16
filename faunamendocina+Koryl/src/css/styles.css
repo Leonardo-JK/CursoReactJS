@@ -515,4 +515,241 @@ html {
   padding: 0 1.5rem;
 }
 
+.botones2 {
+  display: flex;
+  justify-content: end;
+  width: 90%;
+  margin-top: 3rem;
+}
+
+.procesar {
+  display: block;
+  height: 2rem;
+  border-radius: 1rem;
+  box-shadow: 5px 5px 8px grey;
+  background-color: #158506;
+  color: azure;
+  font-size: 1.5rem;
+  padding: 0 1.5rem;
+  margin-right: 15rem;
+}
+.procesar a {
+  text-decoration: none;
+  color: azure;
+  font-size: 1.5rem;
+  padding: 1.5rem;
+}
+
+.checkout {
+  background-image: url("../img/fondo1.jpg");
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.checkout div .seguir {
+  margin: 2rem 0 0 50rem;
+}
+.checkout__datos {
+  display: flex;
+  width: 90%;
+  margin-top: 3rem;
+}
+.checkout__inputs {
+  display: flex;
+  flex-direction: column;
+  width: 25%;
+}
+.checkout__inputs .num {
+  padding: 0 0.7rem 0.1rem 0.7rem;
+  height: 1rem;
+  font-size: 2rem;
+  color: azure;
+  background-color: #acccd4;
+  border-radius: 1.2rem;
+}
+.checkout__form {
+  display: flex;
+  flex-direction: column;
+}
+.checkout__form input {
+  margin: 1rem 0 0 1rem;
+  max-width: 20rem;
+  height: 1.5rem;
+  border-color: white;
+  border-radius: 0.75rem;
+  padding: 0.5rem;
+}
+.checkout__form input::placeholder {
+  color: lightgrey;
+  text-align: center;
+}
+.checkout__submitCom {
+  height: 1.5rem;
+  width: 6rem;
+  border-radius: 0.75rem;
+  box-shadow: 5px 5px 8px grey;
+  background-color: #158506;
+  color: azure;
+  text-align: center;
+  margin: 3rem 0 0 14rem;
+}
+.checkout__revision {
+  display: flex;
+  flex-direction: column;
+  width: 25%;
+  margin-left: 3rem;
+}
+.checkout__revision .num {
+  padding: 0 0.7rem 0.1rem 0.7rem;
+  height: 1rem;
+  font-size: 2rem;
+  color: azure;
+  background-color: #acccd4;
+  border-radius: 1.2rem;
+}
+.checkout__pago {
+  display: flex;
+  flex-direction: column;
+}
+.checkout__pago div {
+  margin: 1rem 0 0 1rem;
+}
+.checkout__pago div input {
+  margin-right: 0.25rem;
+}
+.checkout__pago div label {
+  margin-right: 1.5rem;
+}
+.checkout__tarjeta {
+  display: flex;
+  flex-direction: column;
+}
+.checkout__tarjeta select, .checkout__tarjeta input {
+  width: 10rem;
+  margin: 0rem 0 0.5rem 1rem;
+}
+.checkout__submitPagB {
+  display: flex;
+  justify-content: space-around;
+}
+.checkout__submitPag {
+  height: 1.5rem;
+  width: 6rem;
+  border-radius: 0.75rem;
+  box-shadow: 5px 5px 8px grey;
+  background-color: #158506;
+  color: azure;
+  text-align: center;
+  margin: 3rem 0 0 0;
+}
+.checkout__check {
+  display: flex;
+  flex-direction: column;
+  margin-left: 3rem;
+}
+.checkout__check .num {
+  padding: 0 0.7rem 0.1rem 0.7rem;
+  height: 1rem;
+  font-size: 2rem;
+  color: azure;
+  background-color: #acccd4;
+  border-radius: 1.2rem;
+}
+.checkout__check {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 40%;
+}
+.checkout__check h2 {
+  align-self: start;
+}
+.checkout__confirmacion {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80%;
+  margin-top: 1rem;
+  border: 1px solid;
+}
+.checkout__confirmacion h3 {
+  margin: 1rem 0 1rem 0;
+}
+.checkout__confirmacion .span {
+  font-weight: bold;
+  margin-right: 0.5rem;
+}
+.checkout__time {
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+}
+.checkout__comprador {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
+  width: 90%;
+}
+.checkout__table {
+  border: 1px black;
+  width: 90%;
+}
+.checkout__table td {
+  width: 7rem;
+  text-align: center;
+}
+.checkout__pagoCon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 1rem;
+}
+.checkout__pagoCon p {
+  margin-bottom: 0.5rem;
+}
+.checkout__envio {
+  align-self: start;
+  margin: 1rem 0 1rem 5rem;
+}
+.checkout__submitConfB {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+}
+.checkout__submitConf {
+  height: 1.5rem;
+  width: 6rem;
+  border-radius: 0.75rem;
+  box-shadow: 5px 5px 8px grey;
+  background-color: #158506;
+  color: azure;
+  text-align: center;
+  margin: 1rem 0 0 0rem;
+}
+
+.comprobante {
+  background-image: url("../img/fondo1.jpg");
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.comprobante__title {
+  font-size: 2rem;
+  margin-top: 2rem;
+}
+.comprobante__codigo {
+  font-size: 1.4rem;
+  margin-top: 3rem;
+}
+.comprobante__codigo span {
+  margin-left: 1rem;
+}
+.comprobante div .seguir {
+  margin-top: 4rem;
+}
+
 /*# sourceMappingURL=styles.css.map */

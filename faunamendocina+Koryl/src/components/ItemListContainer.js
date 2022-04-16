@@ -15,23 +15,16 @@ function ItemListContainer() {
         setInfo(false);
         
         const prodRef = collection(db, "items");
-        let q;
-        categoryid === undefined ? q = prodRef : q = query(prodRef, where("categoria", "==", categoryid));
+        let coleccion;
+        categoryid === undefined ? coleccion = prodRef : coleccion = query(prodRef, where("categoria", "==", categoryid));
         
-        getDocs(q)
+        getDocs(coleccion)
             .then(resp => {
                 items = resp.docs.map((doc) => ({id: doc.id, ...doc.data()}));
                 console.log(items);
                 setInfo(items);
                 
             })
-            // .finally(() => {
-            //     if(categoryid){
-            //         setInfo(items.filter((cat) => cat.categoria === categoryid));
-            //     } else{
-            //         setInfo(items);
-            //     }   
-            // }) 
     }, [categoryid])
     
     return (
