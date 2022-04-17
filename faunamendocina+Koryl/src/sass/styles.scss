@@ -877,4 +877,15 @@ html {
             margin-top: 4rem;
         }
     }
+
+    &__sinStock {
+        list-style:circle;
+        margin-top: 3rem;
+
+        li {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+    }
+
 }

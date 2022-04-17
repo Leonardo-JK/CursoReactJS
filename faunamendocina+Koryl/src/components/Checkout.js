@@ -2,7 +2,8 @@ import React, { useContext, useState } from 'react';
 import { CartContext } from '../contexts/CartContext';
 import {Link} from 'react-router-dom';
 import {db} from '../firebase/config';
-import { collection, addDoc, doc, updateDoc } from 'firebase/firestore';
+import { collection, addDoc, doc, updateDoc, getDoc, getDocs, writeBatch, query, where, documentId } from 'firebase/firestore';
+import { async, base64urlEncodeWithoutPadding } from '@firebase/util';
 
 function Checkout() {
     const {cart, total, clear} = useContext(CartContext);
@@ -37,11 +38,12 @@ function Checkout() {
     const [displayTic, setDisplayTic] = useState(false);
     const [disableInputPag, setDisableInputPag] = useState(false);
     const [ticketID, setTicketID] = useState(null);
+    const [sinStockState, setSinStockState] = useState([])
     
     let orden;
 
-
     console.log(cart);
+    console.log(sinStockState);
 
     const submitComp = (e) =>{
         e.preventDefault();
@@ -156,22 +158,70 @@ function Checkout() {
         console.log("hola");
     }
 
-    const pagar = () => {
+    const pagar = async () => {
         setButtonAntConfDisab(true);
         setStyleAntConfButton({backgroundColor: "rgba(21, 133, 6, 0.2)"});
         setButtonConfDisab(true);
         setStyleConfButton({backgroundColor: "rgba(21, 133, 6, 0.2)"});
 
+        const batch = writeBatch(db);
         const ticketRef = collection(db, "ordenes");
+        const prodRef = collection(db, "items");
+        const q = query(prodRef, where(documentId(), "in", cart.map((item) => item.id)));
 
-        updateDoc()
-        
-        addDoc(ticketRef, ticket)
-            .then((docu) => {
-                setTicketID(docu.id);
-                clear();
-                console.log(ticketID);
-            })   
+        const produc = await getDocs(q);
+
+        const sinStock = [];
+
+        produc.docs.forEach((doc) => {
+            console.log(doc.data());
+            const elemento = cart.find((it) => it.id === doc.id)
+
+            let suma = 0;
+            elemento.unidades.forEach((el) => suma += el.cantidad);
+
+            if(doc.data().stock >= suma){
+                batch.update(doc.ref, {
+                    stock: doc.data().stock - suma
+                })
+            } else {
+                sinStock.push(elemento.nombre);
+            }
+        })
+
+        if(sinStock.length > 0){
+            console.log(sinStock);
+            setSinStockState(sinStock);
+        } else {
+            batch.commit();
+            addDoc(ticketRef, ticket)
+                .then((docu) => {
+                    setTicketID(docu.id);
+                    clear();
+                    console.log(ticketID);
+            })     
+        }
+
+            
+    }
+
+    if(sinStockState.length > 0) {
+        console.log(sinStockState);
+        return (
+            <div className='comprobante'>
+                <h3 className='comprobante__title'>Lo siento hubo un erroe en la compra.</h3>
+                <p className='comprobante__codigo'>Las cantidades solicitadas de los siguientes productos son mayores al stock disponible: {sinStockState}</p>
+                <ul className='comprobante__sinStock'>
+                    {sinStockState.map((item) => (
+                        <li>{item}</li>
+                    ))}
+                </ul>
+                
+                <div>
+                    <button className='seguir'><Link to='/'>Volver al catalogo</Link></button>
+                </div>
+            </div>
+        )
     }
 
     if(ticketID){
@@ -394,8 +444,8 @@ function Checkout() {
                                                             <td>{un.cantidad}</td>
                                                             <td>{item.nombre}</td>
                                                             <td>{un.tamanno}</td>
-                                                            <td>{item.precio}</td>
-                                                            <td>{un.cantidad * item.precio}</td>
+                                                            <td>$ {item.precio}</td>
+                                                            <td>$ {un.cantidad * item.precio}</td>
                                                         </tr>
                                                 )                                            
                                                 })}
@@ -408,7 +458,7 @@ function Checkout() {
 
                         <div className='checkout__pagoCon'>
                             <p><span className='span'>TOTAL:</span> $ {total()}</p>
-                            <p><span className='span'>Pago:</span> {ticket.pago.cuotas} cuotas de $ {Math.round(total()/parseInt(ticket.pago.cuotas) + 10)}</p>
+                            <p><span className='span'>Pago:</span> {ticket.pago.cuotas} cuotas de $ {Math.round(total()/parseInt(ticket.pago.cuotas))}</p>
                         </div>
                             
                         <div className='checkout__envio'>

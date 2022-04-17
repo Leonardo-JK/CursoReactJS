@@ -751,5 +751,13 @@ html {
 .comprobante div .seguir {
   margin-top: 4rem;
 }
+.comprobante__sinStock {
+  list-style: circle;
+  margin-top: 3rem;
+}
+.comprobante__sinStock li {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
 
 /*# sourceMappingURL=styles.css.map */

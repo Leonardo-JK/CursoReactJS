@@ -78,7 +78,7 @@ function Cart(){
                             return (
                                 <tr>
                                     <td className='table__td'>#{cart.indexOf(item) + 1}</td>
-                                    <td className='table__td'><img src={imagen(`${item.imagen}`)} alt={item.nombre} /></td>
+                                    <td className='table__td'><Link to={"/item/" + item.id}><img src={imagen(`${item.imagen}`)} alt={item.nombre} /></Link></td>
                                     <td className='table__desc'>{item.nombre}</td>
                                     <td className='table__td' colSpan={5}>
                                         <table className='table__second'>
