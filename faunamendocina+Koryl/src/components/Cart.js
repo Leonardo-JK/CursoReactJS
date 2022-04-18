@@ -6,42 +6,7 @@ const imagen = require.context("./../img", true);
 
 function Cart(){
     let {cart, removeItem, total, setUn, clear} = useContext(CartContext);
-    console.log(cart);
-    //     [
-    //         {
-    //             "id":2,
-    //             "unidades":[
-    //                 {"tamanno":"S","cantidad":39},
-    //                 {"tamanno":"L","cantidad":35},
-    //                 {"tamanno":"M","cantidad":52}
-    //             ],
-    //             "nombre":"Remera Puma",
-    //             "precio":1300,
-    //             "imagen":"./remeraPuma.png"
-    //         },
-    //         {
-    //             "id":10,
-    //             "unidades":[
-    //                 {"tamanno":"M","cantidad":19},
-    //                 {"tamanno":"L","cantidad":30},
-    //                 {"tamanno":"XXL","cantidad":32}
-    //             ],
-    //             "nombre":"Gorra Puma",
-    //             "precio":800,
-    //             "imagen":"./gorraPuma.png"
-    //         },
-    //         {
-    //             "id":5,
-    //             "unidades":[
-    //                 {"tamanno":"500ml","cantidad":1}
-    //             ],
-    //             "nombre":"Tasa Halcón Peregrino",
-    //             "precio":600,
-    //             "imagen":"./tasaHalconPeregrino.png"
-    //         }
-    //     ]
-    // );
-
+    
     useEffect(() => {
         if(cart.length === 0){
             setUn(0);
@@ -114,10 +79,7 @@ function Cart(){
                 </div>    
                 :
                 <h1 className='table__carga'>El carrito esta vacio</h1> 
-            }
-            
-            
-            
+            }         
         </div>
     )    
 }

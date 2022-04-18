@@ -14,6 +14,7 @@ function ItemList(props) {
                             src={item.url} 
                             alt={item.nombre} 
                             id={item.id}
+                            stock={item.stock}
                         />
                     </div>
                     

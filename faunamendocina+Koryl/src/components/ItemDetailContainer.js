@@ -6,24 +6,23 @@ import { doc, getDoc } from 'firebase/firestore';
 import { db } from '../firebase/config';
 
 function ItemDetailContainer() {
-    let [item, setItem] = useState(false);
+    let [item, setItem] = useState(false); // --> Estado que maneja la pantalla de carga <--
     const {id} = useParams();
     let prod;
 
+    // --> Inicio solicitud de datos a la base de datos segun id.
     useEffect(() => {
         const docRef = doc(db, "items", id);
-        console.log(docRef);
+        
         getDoc(docRef)
             .then(doc => {
                 prod = {id: doc.id, ...doc.data()};
-                console.log(doc);
-                console.log(prod.id);
             })
             .finally(() => {
                 setItem(prod);
             })
-
     }, [id]);
+    // <-- Final solicitud de datos a la base de datos segun id.
 
     return (
         <div className='detalles'>

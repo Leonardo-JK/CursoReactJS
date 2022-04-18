@@ -3,7 +3,7 @@ import { CartContext } from '../contexts/CartContext';
 import {Link} from 'react-router-dom';
 import {db} from '../firebase/config';
 import { collection, addDoc, doc, updateDoc, getDoc, getDocs, writeBatch, query, where, documentId } from 'firebase/firestore';
-import { async, base64urlEncodeWithoutPadding } from '@firebase/util';
+
 
 function Checkout() {
     const {cart, total, clear} = useContext(CartContext);
@@ -22,7 +22,10 @@ function Checkout() {
         cuotas: "1",
         envio: ""
     })
-    const [ticket, setTicket] = useState({});
+
+    const [ticket, setTicket] = useState({}); // --> Estado que almacenara todos los datos de la compra. <--
+
+    // --> Estados destinados a la habilitacion y desabilitacion de elementos y botones del checkout.
     const [submitComDisab, setSubmitComDisab] = useState(true);
     const [submitPagDisab, setSubmitPagDisab] = useState(true);
     const [buttonAntPagDisab, setButtonAntPagDisab] = useState(false);
@@ -38,18 +41,16 @@ function Checkout() {
     const [displayTic, setDisplayTic] = useState(false);
     const [disableInputPag, setDisableInputPag] = useState(false);
     const [ticketID, setTicketID] = useState(null);
-    const [sinStockState, setSinStockState] = useState([])
+    const [sinStockState, setSinStockState] = useState([]);
+    // <--
     
-    let orden;
-
-    console.log(cart);
-    console.log(sinStockState);
-
+    // --> Funcion encargada de cargar los datos del comprador.
     const submitComp = (e) =>{
         e.preventDefault();
         
         const d = new Date();
 
+        // --> Se comprueba que el valor almacenado tenga 2 cifras, agregado un 0, para valores menores a 10.
         const decena = (time) => {
             if(time < 10){
                 return "0"+time
@@ -57,7 +58,9 @@ function Checkout() {
                 return time
             }
         }
+        // <--
 
+        // --> Se setea un objeto auxiliar con los datos del comprados.
         const aux = {
             fecha: [decena(d.getDate()), decena(d.getMonth()+1), d.getFullYear()],
             hora: [decena(d.getHours()), decena(d.getMinutes()), decena(d.getSeconds())],
@@ -66,70 +69,74 @@ function Checkout() {
             pago: {},
             total: total()
         }
+        // <--
 
-        orden = aux;
-        setTicket(orden);
-        setDisplayPag(true);
-        setDisableCom(true);
-        setSubmitComDisab(true);
-        setStyleComButton({backgroundColor: "rgba(21, 133, 6, 0.2)"});
-        setDisableInputPag(false);
-
-
-        console.log(ticket);
-        console.log(ticket.pago);
+        setTicket(aux);     // --> Actualizacion del Ticket de compra. <--
+        setDisplayPag(true);    // --> Se despliega la seccion de formas de pago y envio. <--
+        setDisableCom(true);    // --> Desabilitacion del boton siguiente en la seccion de datos de comprador. <--
+        setSubmitComDisab(true);    // --> Desabilitacion de los inputs en la seccion de pago. <--
+        setStyleComButton({backgroundColor: "rgba(21, 133, 6, 0.2)"}); // --> Cambia estilo al boton siguiente en la seccion de datos de comprador. <--
+        setDisableInputPag(false);  // --> Habilita los inputs en la seccion de pago. <--
     }
+    // <--
 
+    // --> Funcion encargada de cargar los datos de Pago.
     const submitPago = (e) => {
         e.preventDefault();
 
-        let aux = ticket;
-        aux.pago = pago;
+        let aux = ticket;   // --> Crea un array auxiliar. <--
+        aux.pago = pago;    // --> Agrega los datos de pago al array auxiliar. <--
 
-        setTicket(aux);
-        setDisplayTic(true);
-        setSubmitPagDisab(true);
-        setStylePagButton({backgroundColor: "rgba(21, 133, 6, 0.2)"})
-        setButtonAntPagDisab(true);
-        setStyleAntPagButton({backgroundColor: "rgba(21, 133, 6, 0.2)"})
-        setDisableInputPag(true);
-
-        console.log(ticket);
+        setTicket(aux);     // --> Actualizacion del Ticket de compra. <--
+        setDisplayTic(true);    // --> Se despliega la seccion de confirmacion de compra. <--
+        setSubmitPagDisab(true);    // --> Desabilitacion del boton siguiente en la seccion de datos de pago. <--
+        setStylePagButton({backgroundColor: "rgba(21, 133, 6, 0.2)"}) // --> Cambia estilo al boton siguiente en la seccion de datos de pago. <--
+        setButtonAntPagDisab(true); // --> Deshabilita el boton Anterior en la seccion de pago. <--
+        setStyleAntPagButton({backgroundColor: "rgba(21, 133, 6, 0.2)"})    // --> Cambia estilo al boton anterior en la seccion de datos de pago. <--
+        setDisableInputPag(true);   // --> Desabilita los inputs de la seccion de pago.
     }
+    // <--
 
-
+    // --> Funcion encargada de almacenar los datos de los inputs en la seccion de datos del comprador.
     const changeD = (e) =>{
-        console.log(e.target.name);
-        console.log(e.target.value);
+        
+        // --> Actuliza el valor correspondiente en el estado comprodor.
         setComprador({
             ...comprador,
             [e.target.name]: e.target.value
         });
+        // <--
 
-        console.log(comprador);
-
+        // --> Habilita el boton siguiente si en la seccion de datos de comprador, solo si todos los campos estan llenos.
         if(check(comprador)){
-            setSubmitComDisab(false);
-            setStyleComButton({backgroundColor: "rgba(21, 133, 6, 1)"})
+            setSubmitComDisab(false); // --> Habilita el boton Siguiente de la seccion datos de comprador. <--
+            setStyleComButton({backgroundColor: "rgba(21, 133, 6, 1)"}) // --> Cambia estilo al boton siguiente en la seccion de datos de comprador. <--
         }
+        // <--
     }
+    // <--
 
+    // --> Funcion encargada de almacenar los datos los datos de los inputs en la seccion de datos de pago.
     const changeP = (e) => {
-        console.log(e.target.name);
-        console.log(e.target.value);;
+        
+        // --> Actuliza el valor correspondiente en el estado pago.
         setPago({
             ...pago,
             [e.target.name]: e.target.value
         })
+        // <--
 
-        console.log(pago);
-
+        // --> Habilita el boton siguiente si en la seccion de datos de pago, 
+        //      solo si todos los campos estan llenos, discriminado si el pago es con tarjeta o en efectivo.
         if(check(pago) || (pago.forma === "efectivo" && pago.envio !== "")){
-            setSubmitPagDisab(false);
-            setStylePagButton({backgroundColor: "rgba(21, 133, 6, 1)"})
+            setSubmitPagDisab(false);   // --> Habilita el boton Siguiente de la seccion datos de pago. <--
+            setStylePagButton({backgroundColor: "rgba(21, 133, 6, 1)"}) // --> Cambia estilo al boton siguiente en la seccion de datos de pago. <--
         }
+        // <--
     }
+    // <--
 
+    // --> Funcion encargada de si los campos de un objeto estan todos completos.
     const check = (objet) => {
         let values = Object.values(objet);
         for(let i = 0; i < values.length; i++){
@@ -140,14 +147,18 @@ function Checkout() {
 
         return true;
     }
+    // <--
 
+    // --> Funcion encargada de volver a la seccion de detos de comprador.
     const volverCom = () => {
         setDisplayPag(false);
         setDisableCom(false);
         setSubmitComDisab(false);
         setStyleComButton({backgroundColor: "rgba(21, 133, 6, 1)"})
     }
+    // <--
 
+    // --> Funcion encargada de volver a la seccion de detos de pago.
     const volverPag = () => {
         setDisplayTic(false);
         setButtonAntPagDisab(false);
@@ -155,31 +166,40 @@ function Checkout() {
         setStylePagButton({backgroundColor: "rgba(21, 133, 6, 1)"});
         setStyleAntPagButton({backgroundColor: "rgba(21, 133, 6, 1)"});
         setDisableInputPag(false);
-        console.log("hola");
     }
+    // <--
 
+    // --> Funcion encargada de generar una orden de compra.
     const pagar = async () => {
+
+        // --> Desabilitacion de los botones de la seccion Confirmacion de compra.
         setButtonAntConfDisab(true);
         setStyleAntConfButton({backgroundColor: "rgba(21, 133, 6, 0.2)"});
         setButtonConfDisab(true);
         setStyleConfButton({backgroundColor: "rgba(21, 133, 6, 0.2)"});
+        // <--
 
+        // --> Pedido de datos de la base de datos segun los productos del carrito.
         const batch = writeBatch(db);
         const ticketRef = collection(db, "ordenes");
         const prodRef = collection(db, "items");
         const q = query(prodRef, where(documentId(), "in", cart.map((item) => item.id)));
 
         const produc = await getDocs(q);
+        // <--
 
         const sinStock = [];
 
+        // --> Verificacion de stock y actualizacion del mismo segun los datos de compra.
         produc.docs.forEach((doc) => {
-            console.log(doc.data());
             const elemento = cart.find((it) => it.id === doc.id)
 
+            // --> Suma cantidad todal de unidades para un producto determinado.
             let suma = 0;
             elemento.unidades.forEach((el) => suma += el.cantidad);
+            // <--
 
+            // --> Prepara el batch de actualizacion de stock y filtra elementos sin stock suficiente.
             if(doc.data().stock >= suma){
                 batch.update(doc.ref, {
                     stock: doc.data().stock - suma
@@ -187,24 +207,33 @@ function Checkout() {
             } else {
                 sinStock.push(elemento.nombre);
             }
+            // <--
         })
+        // <--
 
+        // --> Determina si se envia el batch de actualizacion de stock junto con la generacion de 
+        //      la orden de compra correspondiente o si carga la pantalla con la lista de productos 
+        //      sin stock suficiente.
         if(sinStock.length > 0){
-            console.log(sinStock);
             setSinStockState(sinStock);
         } else {
-            batch.commit();
+
+            batch.commit();     // --> Envio del batch de actualizacion de estock.
+            
+            // --> Generacion de orden de compra.
             addDoc(ticketRef, ticket)
                 .then((docu) => {
                     setTicketID(docu.id);
                     clear();
                     console.log(ticketID);
             })     
+            // <--
         }
-
-            
+        // <--            
     }
+    // <--
 
+    // --> Si se encuentran prudctos sin stock suficiente, se muestra en pantalla.
     if(sinStockState.length > 0) {
         console.log(sinStockState);
         return (
@@ -223,7 +252,9 @@ function Checkout() {
             </div>
         )
     }
+    // <--
 
+    // --> Si la compra se realiza exitosamente muestra al cliente el codigo de ticket.
     if(ticketID){
         return (
             <div className='comprobante'>
@@ -235,6 +266,7 @@ function Checkout() {
             </div>
         )
     }
+    // <--
 
     return (
         
@@ -379,14 +411,22 @@ function Checkout() {
                                     disabled={disableInputPag}>
                             </input>
 
+                            {pago.forma === "credito"
+                            ?
                             <select onChange={changeP} name="cuotas" disabled={disableInputPag}>
                                 <option value={""} selected={true} disabled={true}>Seleccione Cuotas</option>
-                                <option value={1}>1 x $ {total()}</option>
+                                <option value={1}>1 x $ {total()}</option>                                
                                 <option value={3}>3 x $ {Math.round(total() / 3 + 10)}</option>
                                 <option value={6}>6 x $ {Math.round(total() / 6  + 10)}</option>
                                 <option value={12}>12 x $ {Math.round(total() / 12  + 10)}</option>
                                 <option value={18}>18 x $ {Math.round(total() / 18  + 10)}</option>
-                            </select>    
+                            </select>
+                            :
+                            <select onChange={changeP} name="cuotas" disabled={disableInputPag}>
+                                <option value={""} selected={true} disabled={true}>Seleccione Cuotas</option>
+                                <option value={1}>1 x $ {total()}</option>
+                            </select>
+                            }    
                         </div>
                         :
 

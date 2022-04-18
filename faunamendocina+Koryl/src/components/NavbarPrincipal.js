@@ -2,6 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import arrowDown from '../img/arrow-down.png';
 
+
+// --> Esta barra de navegacion esta para poder integrar la tienda dentro de otra pagina 
+// mas grande que desarrollada en los cursos anteriores <--
 function NavbarPrincipal() {
     return (
     <div className='navbarP'>

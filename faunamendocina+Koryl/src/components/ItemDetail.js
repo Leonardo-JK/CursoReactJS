@@ -10,8 +10,8 @@ function ItemDetail(props) {
     let [stock, setStock] = useState(JSON.parse(props.elemento.stock));
     let [cant, setCant] = useState(1);
     let [taman, setTaman] = useState("");
-    let [state, setState] = useState(true);
-    let {cart, addItem, isInCart, isTamId, mostrar, cantUn} = useContext(CartContext);
+    let [state, setState] = useState(true); // --> Estado que habilita/desabilita el selector de cantidad y el boton agregar al carrito <--
+    let {cart, addItem, isInCart, isTamId, mostrar} = useContext(CartContext);
 
     let aux = cart;
     let inAux = 0;
@@ -19,12 +19,16 @@ function ItemDetail(props) {
     let isId = false;
     let isTam = false;
 
+    // --> Inicio desabilito state hasta que no se selecciona el tamaño.
     if(taman !== "" && state === true){
         setState(false);
     }
+    // <-- Final desabilito state hasta que no se selecciona el tamaño.
         
+    // --> Inicio busqueda si un producto ya se ha agregado y ejecuta segun corresponda.
     function agregar(){
         
+        // --> Setea objeto item a agregar.
         const item = {
             id: props.elemento.id,
             unidades: [{
@@ -35,34 +39,55 @@ function ItemDetail(props) {
             precio: props.elemento.precio,
             imagen: props.elemento.url
         }
+        // <--
 
-        inAux = isInCart(item.id, aux)[0];
-        isId = isInCart(item.id, aux)[1];
+        inAux = isInCart(item.id, aux)[0];  // --> Setea indice en el que se ubica el producto. <--
+        isId = isInCart(item.id, aux)[1];   // --> Confirma la existencia del producto en el carrito. <--
 
+        // --> Preparacion del array auxiliar que se seteara en el Cart.
         if(isId){
-            inTam = isTamId(aux[inAux].unidades, taman)[0];
-            isTam = isTamId(aux[inAux].unidades, taman)[1];
+            inTam = isTamId(aux[inAux].unidades, taman)[0]; // --> Setea indice en el que se ubica el tamaño dado. <--
+            isTam = isTamId(aux[inAux].unidades, taman)[1]; // --> Confirma la existencia de un tamaño para un determinado producto. <--
+            
             if(isTam){
-                aux[inAux].unidades[inTam].cantidad = aux[inAux].unidades[inTam].cantidad + parseInt(cant);
+                // --> Suma la cantidad seleccionada al tamaño prexistente determinado.
+                aux[inAux].unidades[inTam].cantidad = aux[inAux].unidades[inTam].cantidad + parseInt(cant); 
+                // <--
+
+                // --> Si el stock del tamaño determinado es menor a la suma total de unidades
+                //      setea la cantidad final igual al stock.
                 if(aux[inAux].unidades[inTam].cantidad > props.elemento.stock){
                     aux[inAux].unidades[inTam].cantidad = props.elemento.stock;
                     setState(true);
                 }
+                // <--
             } else {
+                // --> Si el tamaño estipulado, no se encuentra aun en el array de unidades de dicho producto,
+                //      se agrea el objeto correspondiente al array.
                 aux[inAux].unidades.push({tamanno: taman, cantidad: parseInt(cant)});
+                // <--
             }
         } else {
+            // --> Si el producto estipulado, no se encuentra aun en el carrito,
+            //      se agrea el objeto correspondiente al array.
             aux.push(item);
+            // <--
         }
+        // <--
 
-        addItem(aux);
+        addItem(aux); 
         
-        setCant(1);
+        setCant(1); // --> Setea por defecto en 1 la cantidad en el selector de unidades. <--
+
+        // --> Si la cantidad seleccionada es igual al stock, setea  en 0 la cantidad en el selector de unidades.
         if((stock - cant) === 0 || cant === 0){
             setCant(0);
         }
-        mostrar();
+        // <--
+
+        mostrar(); // --> Hace visible el CartWidget. <--
     }
+    // <-- Final busqueda si un producto ya se ha agregado y ejecuta segun corresponda.
 
     useEffect(() => {
 
@@ -101,6 +126,7 @@ function ItemDetail(props) {
                                 setCant={setCant}
                                 stock={stock}
                                 state={state}
+                                setState={setState}
                             />
                         </div>
                     </div>

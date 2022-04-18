@@ -5,7 +5,7 @@ import { CartContext } from '../contexts/CartContext';
 
 function NavBar (){
 
-    let {vista} = useContext(CartContext);
+    let {vista} = useContext(CartContext); 
 
     useEffect(() => {
 
@@ -13,9 +13,6 @@ function NavBar (){
 
     return (
         <div className='navbar'>
-            <div className='navbar__filtros'>
-                <p>Filtros</p>
-            </div>
             <div id='menu' className='navbar__menu'>
                 <ul>
                     <li><Link id='tasas' to='/category/tasas'>TASAS</Link ></li>
@@ -32,9 +29,7 @@ function NavBar (){
                     :
                     <div className='navbar__cart'>
                     </div>
-            }
-            
-            
+            }           
         </div>
     );
 }
