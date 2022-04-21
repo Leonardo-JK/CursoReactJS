@@ -8,11 +8,14 @@ import ItemDetailContainer from './components/ItemDetailContainer';
 import Cart from './components/Cart';
 import Checkout from './components/Checkout';
 import {CartProvider} from './contexts/CartContext';
+import { LoginProvider } from "./contexts/LoginContext";
+import Register from "./components/Register";
 
 function App() {
 
     return (
         <CartProvider>
+        <LoginProvider>
             <BrowserRouter>
                 <div className="App">
                     <Header />
@@ -24,11 +27,13 @@ function App() {
                         <Route path='/item/:id' element={<ItemDetailContainer/>}/>
                         <Route path='/cart' element={<Cart/>}/>
                         <Route path='/checkout' element={<Checkout/>}/>
+                        <Route path='/registro' element={<Register />}/>
 
                         <Route path="*" element={<h1>Error404</h1>}/>
                     </Routes>   
                 </div>
             </BrowserRouter>
+        </LoginProvider>
         </CartProvider>
     );
 }

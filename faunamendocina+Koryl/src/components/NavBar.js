@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from 'react';
 import {Link} from 'react-router-dom';
 import CartWidget from './CartWidget';
 import { CartContext } from '../contexts/CartContext';
+import LoginWidget from './LoginWidget';
 
 function NavBar (){
 
@@ -20,6 +21,9 @@ function NavBar (){
                     <li><Link id='gorras' to='/category/gorras'>GORRAS</Link></li>
                     <li><Link id='buzos' to='/category/buzos'>BUZOS</Link></li>
                 </ul>
+            </div>
+            <div className='navbar__login'>
+                <LoginWidget />
             </div>
             {vista ?
                     <div className='navbar__cart'>

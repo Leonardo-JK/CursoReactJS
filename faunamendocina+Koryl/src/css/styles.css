@@ -149,9 +149,101 @@ html {
 .navbar__menu ul li a:hover .navbar__menu ul li a:visited {
   color: white;
 }
+.navbar__login {
+  height: 100%;
+  margin-left: 15rem;
+}
 .navbar__cart {
   height: 100%;
+  width: 5rem;
   margin-right: 3rem;
+}
+
+.login {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.login__unloged {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.login__title {
+  color: white;
+  font-weight: bold;
+  font-size: 1.25rem;
+}
+.login__inputs {
+  width: 20rem;
+  height: 13rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  z-index: 2;
+  top: 3rem;
+  left: -6rem;
+  background-color: rgba(147, 172, 186, 0.9);
+  border: 1px solid white;
+  border-radius: 1rem;
+}
+.login__inputs input {
+  width: 70%;
+  height: 1.5rem;
+  border-radius: 0.75rem;
+  margin-top: 1.5rem;
+  padding: 0 1rem;
+}
+.login__inputs input::placeholder {
+  text-align: center;
+  color: lightgrey;
+}
+.login__count {
+  width: 20rem;
+  height: 13rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  position: absolute;
+  z-index: 2;
+  top: 3rem;
+  left: -6rem;
+  background-color: rgba(147, 172, 186, 0.9);
+  border: 1px solid white;
+  border-radius: 1rem;
+}
+.login__buttons {
+  width: 100%;
+  margin-top: 2rem;
+  display: flex;
+  justify-content: space-around;
+}
+.login__buttons a {
+  width: 40%;
+  height: 1.75rem;
+}
+.login__buttons a .login__registro {
+  width: 100%;
+  height: 100%;
+  border-radius: 0.75rem;
+  box-shadow: 5px 5px 8px grey;
+  background-color: #283b6d;
+  color: azure;
+  text-align: center;
+}
+.login__button {
+  width: 40%;
+  height: 1.75rem;
+  border-radius: 0.75rem;
+  box-shadow: 5px 5px 8px grey;
+  background-color: #158506;
+  color: azure;
+  text-align: center;
 }
 
 .cartWidget {
@@ -165,6 +257,7 @@ html {
 }
 .cartWidget__img {
   height: 100%;
+  margin-left: 2rem;
 }
 .cartWidget__number {
   display: block;
@@ -760,6 +853,121 @@ html {
 .comprobante__sinStock li {
   font-size: 2rem;
   margin-bottom: 1rem;
+}
+
+.register {
+  width: 100%;
+  height: 100vh;
+  background-image: url("../img/fondo1.jpg");
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.register__inputs {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.register__form {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  align-items: center;
+  margin-top: 2rem;
+}
+.register__form div {
+  width: 100%;
+}
+.register__form div input {
+  width: 45%;
+  height: 1.5rem;
+  border-color: white;
+  border-radius: 0.75rem;
+  padding: 0.5rem;
+}
+.register__form div input::placeholder {
+  text-align: center;
+}
+.register__form input {
+  width: 95%;
+  margin: 0.25rem 1rem 2rem 1rem;
+  height: 1.5rem;
+  border-color: white;
+  border-radius: 0.75rem;
+  padding: 0.5rem;
+}
+.register__form input::placeholder {
+  text-align: center;
+}
+.register__form .linea {
+  width: 100%;
+  border-bottom: 2px solid rgba(133, 129, 129, 0.665);
+}
+.register__usuario {
+  display: flex;
+  width: 100%;
+  align-items: center;
+}
+.register__usuario input {
+  width: 40% !important;
+  margin-top: 2rem !important;
+  align-self: flex-start;
+}
+.register__usuario div {
+  height: 1.5rem;
+  width: 8rem;
+  border-radius: 0.75rem;
+  box-shadow: 5px 5px 8px grey;
+  background-color: #158506;
+  color: azure;
+  text-align: center;
+  padding-top: 0.25rem;
+}
+.register__usuario p {
+  margin-left: 2rem;
+  font-weight: bold;
+}
+.register__pass {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+.register__pass input {
+  width: 40% !important;
+  margin-top: 2rem !important;
+}
+.register__pass p {
+  margin-left: 1rem;
+}
+.register__repass {
+  width: 40% !important;
+  align-self: flex-start;
+}
+.register__enviar {
+  height: 1.5rem;
+  width: 8rem;
+  border-radius: 0.75rem;
+  box-shadow: 5px 5px 8px grey;
+  color: azure;
+  text-align: center;
+}
+
+.succes {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-image: url(../img/fondo1.jpg);
+}
+.succes h2 {
+  margin: 5rem 0 3rem 0;
+  font-size: 3rem;
+}
+.succes h3 {
+  font-size: 2rem;
+  margin-bottom: 5rem;
 }
 
 /*# sourceMappingURL=styles.css.map */

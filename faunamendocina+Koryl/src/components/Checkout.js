@@ -239,7 +239,7 @@ function Checkout() {
         return (
             <div className='comprobante'>
                 <h3 className='comprobante__title'>Lo siento hubo un erroe en la compra.</h3>
-                <p className='comprobante__codigo'>Las cantidades solicitadas de los siguientes productos son mayores al stock disponible: {sinStockState}</p>
+                <p className='comprobante__codigo'>Las cantidades solicitadas de los siguientes productos son mayores al stock disponible:</p>
                 <ul className='comprobante__sinStock'>
                     {sinStockState.map((item) => (
                         <li>{item}</li>
