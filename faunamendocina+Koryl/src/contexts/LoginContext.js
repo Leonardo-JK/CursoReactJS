@@ -2,14 +2,31 @@ import {createContext, useState} from "react";
 import { collection, query, where, getDocs, addDoc } from "firebase/firestore";
 import { db } from '../firebase/config';
 
+
+
 export const LoginContext = createContext();
 
 export const LoginProvider = ({children}) => {
 
     const [login, setLogin] = useState(false);  // --> Estado para verificar si hay un usuario logeado. <--
     const [logUser, setLogUser] = useState({}); // --> Estado en el que se almacenan los datos del usuario logeado. <--
-    
     console.log(logUser);
+
+    console.log(sessionStorage.logUser);
+
+    // --> Verifica si la sesion es la misma y caraga los datos del usuario logeado, por si se recarga la pagina.
+    if(sessionStorage.logUser === undefined){
+        sessionStorage.setItem("logUser", logUser);
+        sessionStorage.setItem("login", false);
+    }
+
+    console.log(sessionStorage.login);
+
+    if(sessionStorage.login === "true" && login === false){
+        setLogin(true);
+        setLogUser(JSON.parse(sessionStorage.logUser));
+    }
+    // <--
 
     // --> Funcion encaragda de verificar los datos del login.
     const checkLog = async (log) => {
@@ -28,8 +45,9 @@ export const LoginProvider = ({children}) => {
 
         if(aux[0].pass === log.pass){
             setLogin(true);
+            sessionStorage.setItem("login", true);
             setLogUser(aux[0]);
-            
+            sessionStorage.setItem("logUser", JSON.stringify(aux[0]));
             return true;
         } else {
             return false;
@@ -77,6 +95,8 @@ export const LoginProvider = ({children}) => {
     const endSession = () => {
         setLogin(false);
         setLogUser({});
+        sessionStorage.setItem("logUser", JSON.stringify({}));
+        sessionStorage.setItem("login", false);
     }
     // <--
 

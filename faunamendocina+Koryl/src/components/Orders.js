@@ -3,11 +3,16 @@ import React, { useContext, useEffect, useState } from "react";
 import { LoginContext } from "../contexts/LoginContext";
 import { db } from "../firebase/config";
 
-
 function Orders() {
     
-    const {logUser} = useContext(LoginContext);
+    const {logUser, login} = useContext(LoginContext);
     const [ordenes, setOrdenes] = useState([]); // --> Almacen de las ordenes a cargar. <--
+
+    // --> Si no hay usuario logeado, envia al home. Se incluyo, ya que al cerrar sesion dentro de las ordenes, el codigo se rompia.
+    if(!login){
+        window.location.href = "/";
+    }
+    // <--
 
     console.log(logUser);
 
