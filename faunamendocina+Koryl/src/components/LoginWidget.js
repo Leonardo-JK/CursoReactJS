@@ -5,13 +5,14 @@ import { LoginContext } from "../contexts/LoginContext";
 function LoginWidget() {
     
     const {login, logUser, checkLog, endSession} = useContext(LoginContext);
-    const [dispLogin, setDispLogin] = useState(false); // --> Estado que maneja el despliegue 
+    const [dispLogin, setDispLogin] = useState(false); // --> Estado que maneja el despliegue del login. <--
     const [userLog, setUserLog] = useState({
         usuario: "",
         pass: ""
     })
-    const [errorLog, setErrorLog] = useState();
+    const [errorLog, setErrorLog] = useState(); // --> Contiene el mensaje de datos invalidos.
 
+    // --> Despliegue y ocultacion del login.
     const displayLogin = (comand) => {
         
         if(dispLogin === false && comand === "in"){
@@ -20,17 +21,20 @@ function LoginWidget() {
 
         if(dispLogin === true && comand === "out"){
             setDispLogin(false)
-        } 
-        
+        }         
     }
+    // <--
 
+    // --> Captura de datos del login.
     const changeLog = (e) => {
         setUserLog({
             ...userLog,
             [e.target.name]: e.target.value
         });
     }
+    // <--
 
+    // --> Verificacion de usuario y contraseña.
     const check = async () => {
         console.log(userLog);
         console.log(await checkLog(userLog));
@@ -42,16 +46,19 @@ function LoginWidget() {
             setErrorLog("¡Usuario y/o contraseña incorrectos!");
         }
     }
+    // <--
 
     useEffect(() => {
 
     }, [dispLogin]);
 
+    // --> Cierre de session.
     const cerrar = () => {
         endSession();
         setDispLogin(false);
         console.log("Sesion cerrada.");
     }
+    // <--
     
     return (
         <div className="login" onMouseEnter={() => displayLogin("in")} onMouseLeave={() => displayLogin("out")}>

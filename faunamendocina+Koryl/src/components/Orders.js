@@ -7,7 +7,7 @@ import { db } from "../firebase/config";
 function Orders() {
     
     const {logUser} = useContext(LoginContext);
-    const [ordenes, setOrdenes] = useState([]);
+    const [ordenes, setOrdenes] = useState([]); // --> Almacen de las ordenes a cargar. <--
 
     console.log(logUser);
 
@@ -26,8 +26,7 @@ function Orders() {
                 })
     })
 
-    console.log(ordenes);
-            
+    console.log(ordenes);            
     
     return (
         <div className="order">

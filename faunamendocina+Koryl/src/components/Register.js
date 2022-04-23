@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { LoginContext } from "../contexts/LoginContext";
 
@@ -15,44 +15,68 @@ function Register() {
         pass: "",
         repass: ""
     })
-    const [validUser, setValidUser] = useState([null, null, true]);
+    const [validUserMsg, setValidUserMsg] = useState();
+    const [validUserCol, setValidUserCol] = useState();
+    const [validUserState, setValidUserstate] = useState(true);
     const [validUserStyle, setValidUserStyle] = useState({backgroundColor: "rgba(121, 138, 118, 0.8)"});
     const [regSucces, setRegSucces] = useState(false);
-    
+    const [passVer, setPassVer] = useState([]);
+    useEffect(() => {
+
+    }, [])
+
+    // --> Captura de datos del registro.
     const changeReg = (e) => {
         setRegistro({
             ...registro,
             [e.target.name]: e.target.value
         });
 
+        // --> Si hay cambios en el campo de usuario, deshavilita el boton del submit para evitar el envio de datos sin
+        //      que se verifique previamente si esta disponible.
         if(e.target.name === "usuario"){
-            setValidUser([null, null, true]);
+            setValidUserstate(true);
+            setValidUserStyle({backgroundColor: "rgba(121, 138, 118, 0.8)"})
         }
-        
+        // <--
         console.log(registro);
     }
+    // <--
 
+    // --> Funcion encargada de verificar que el usuario elegido esta disponible.
     const check = async () => {
         
         console.log(registro);
     
         let aux = await userReg(registro.usuario, 1);
         console.log(aux);
-        setValidUser(aux.slice(0,4));
-        console.log(validUser);
+        setValidUserMsg(aux[0]);
+        setValidUserCol(aux[1]);
+        setValidUserstate(aux[2]);
+        console.log(validUserMsg);
+        console.log(validUserCol);
+        console.log(validUserState);
         console.log(aux[3]);
         setValidUserStyle(aux[3]);        
     }
+    // <--
 
+    // --> Funcion encargada de hacer el registro, si la contraseña y su repeticion no coinciden no realiza el registro.
     const registrar = async (e) => {
         e.preventDefault();
-    
-        userReg(registro, 0);
-        setRegSucces(true);        
+
+        if(registro.pass === registro.repass && registro.pass !== ""){
+            userReg(registro, 0);
+            setRegSucces(true);    
+        }
     }
+    // <--
 
-    console.log(validUser);
+    console.log(validUserMsg);
+    console.log(validUserCol);
+    console.log(validUserState);
 
+    // --> Si el registro se realiza correctamente muestra el mensaje de bienvenida.
     if(regSucces){
         return (
             <div className="succes">
@@ -65,6 +89,7 @@ function Register() {
             </div>                
         )
     }
+    // <--
 
     return (
         <div className="register">
@@ -117,7 +142,7 @@ function Register() {
 
                         <div onClick={check}>Comprobar usuario</div>
 
-                        <p style={validUser[1]}>{validUser[0]}</p>
+                        <p style={validUserCol}>{validUserMsg}</p>
                     </div>
                     
                     <div className="register__pass">
@@ -129,7 +154,7 @@ function Register() {
                                 required={true}>
                         </input>
 
-                        {registro.pass === registro.repass && registro.pass !== "" &registro.repass !== ""
+                        {registro.pass === registro.repass && registro.pass !== "" && registro.repass !== ""
                         ?
                         <p style={{color: "green"}}>Las contraseñas coinciden.</p>
                         :
@@ -148,10 +173,10 @@ function Register() {
                                 onChange={changeReg}
                                 required={true}>
                         </input>
-
+                        
                         <button className="register__enviar" 
                                 type="submit" 
-                                disabled={validUser[2]} 
+                                disabled={validUserState} 
                                 style={validUserStyle}>ENVIAR</button>
                     </div>
                     
