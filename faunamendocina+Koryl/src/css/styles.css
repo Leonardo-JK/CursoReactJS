@@ -970,4 +970,50 @@ html {
   margin-bottom: 5rem;
 }
 
+.order {
+  width: 100%;
+  background-image: url("../img/fondo1.jpg");
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.order__ord {
+  margin-top: 2rem;
+  width: 50%;
+  border: 1px solid;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+.order__ord h3 {
+  margin-bottom: 0.5rem;
+}
+.order__time {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 1rem;
+}
+.order__comprador {
+  margin-bottom: 1rem;
+}
+.order__comprador p {
+  margin: 0 0 0.25rem 4rem;
+}
+.order__table {
+  width: 80%;
+  margin-left: 4rem;
+}
+.order__table td {
+  width: 10rem;
+  text-align: center;
+}
+.order__pagoCon {
+  display: flex;
+  justify-content: space-around;
+  margin: 2rem 0 0 2rem;
+}
+.order__envio {
+  margin: 1rem 0 0 4rem;
+}
+
 /*# sourceMappingURL=styles.css.map */

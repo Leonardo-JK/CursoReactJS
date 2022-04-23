@@ -23,6 +23,7 @@ function ItemListContainer() {
         getDocs(coleccion)
             .then(resp => {
                 items = resp.docs.map((doc) => ({id: doc.id, ...doc.data()}));
+                console.log(items);
                 setInfo(items);
             })
     }, [categoryid])

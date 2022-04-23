@@ -1,7 +1,6 @@
 import {createContext, useState} from "react";
-import { collection, query, where, getDocs, getDoc, Docs, doc, setDoc, addDoc } from "firebase/firestore";
+import { collection, query, where, getDocs, addDoc } from "firebase/firestore";
 import { db } from '../firebase/config';
-import { async } from "@firebase/util";
 
 export const LoginContext = createContext();
 
@@ -9,7 +8,7 @@ export const LoginProvider = ({children}) => {
 
     const [login, setLogin] = useState(false);
     const [logUser, setLogUser] = useState({});
-
+    
     console.log(logUser);
 
     const checkLog = async (log) => {
@@ -29,6 +28,7 @@ export const LoginProvider = ({children}) => {
         if(aux[0].pass === log.pass){
             setLogin(true);
             setLogUser(aux[0]);
+            
             return true;
         } else {
             return false;
@@ -74,7 +74,7 @@ export const LoginProvider = ({children}) => {
             logUser,
             checkLog,
             userReg,
-            endSession
+            endSession           
         }}>
             {children}
         </LoginContext.Provider>

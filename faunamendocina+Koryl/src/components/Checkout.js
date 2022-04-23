@@ -1,18 +1,24 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { CartContext } from '../contexts/CartContext';
 import {Link} from 'react-router-dom';
 import {db} from '../firebase/config';
-import { collection, addDoc, doc, updateDoc, getDoc, getDocs, writeBatch, query, where, documentId } from 'firebase/firestore';
+import { collection, addDoc, doc, updateDoc, getDocs, writeBatch, query, where, documentId, arrayUnion } from 'firebase/firestore';
+import { LoginContext } from '../contexts/LoginContext';
 
 
 function Checkout() {
     const {cart, total, clear} = useContext(CartContext);
+    const { logUser} =  useContext(LoginContext);
+    const [loadData, setLoadData] = useState(false);
+
     const [comprador, setComprador] = useState({
+        usuario: "",
         nombre: "",
         email: "",
         numero: "",
         domicilio: ""
     });
+
     const [pago, setPago] = useState({
         forma: "efectivo",
         tarjeta: "",
@@ -43,6 +49,24 @@ function Checkout() {
     const [ticketID, setTicketID] = useState(null);
     const [sinStockState, setSinStockState] = useState([]);
     // <--
+
+    // --> Funcion encargada de autocompletar los datos del comprador si este esta registrado y logeado en la tienda.
+    useEffect(() => {
+        if(loadData === false && logUser.length !== 0){
+            setComprador({
+                usuario: logUser.usuario,
+                nombre: logUser.nombre,
+                email: logUser.email,
+                numero: logUser.numero,
+                domicilio: logUser.domicilio
+            });
+            setLoadData(true);
+            setSubmitComDisab(false);
+            setStyleComButton({backgroundColor: "rgba(21, 133, 6, 1)"})
+        }
+    }, [loadData]);
+    // <--
+    
     
     // --> Funcion encargada de cargar los datos del comprador.
     const submitComp = (e) =>{
@@ -184,7 +208,7 @@ function Checkout() {
         const ticketRef = collection(db, "ordenes");
         const prodRef = collection(db, "items");
         const q = query(prodRef, where(documentId(), "in", cart.map((item) => item.id)));
-
+        let orden;
         const produc = await getDocs(q);
         // <--
 
@@ -221,15 +245,39 @@ function Checkout() {
             batch.commit();     // --> Envio del batch de actualizacion de estock.
             
             // --> Generacion de orden de compra.
-            addDoc(ticketRef, ticket)
+            await addDoc(ticketRef, ticket)
                 .then((docu) => {
                     setTicketID(docu.id);
+                    console.log(docu.id);
+                    orden = docu.id;
                     clear();
                     console.log(ticketID);
             })     
             // <--
-        }
-        // <--            
+
+            // --> Si el usuario esta logeado guarda el codigo de orden en su perfil.
+            if(loadData){
+                let aux
+                console.log(loadData);
+                console.log(orden);
+
+                const uRef = collection(db, "usuarios")
+                const user= query(uRef, where("usuario", "==", logUser.usuario));
+                await getDocs(user)
+                    .then(resp => {
+                        aux = (resp.docs.map((u) => ({id: u.id})));
+
+                        console.log(aux[0].id);
+                        const oRef = doc(db, "usuarios", aux[0].id);
+
+                        updateDoc(oRef, {
+                            ordenes: arrayUnion(orden)
+                        });
+                })            
+            }
+            // <--
+        }    
+        // <-- 
     }
     // <--
 

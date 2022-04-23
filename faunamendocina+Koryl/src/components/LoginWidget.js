@@ -5,13 +5,12 @@ import { LoginContext } from "../contexts/LoginContext";
 function LoginWidget() {
     
     const {login, logUser, checkLog, endSession} = useContext(LoginContext);
-    const [dispLogin, setDispLogin] = useState(false);
+    const [dispLogin, setDispLogin] = useState(false); // --> Estado que maneja el despliegue 
     const [userLog, setUserLog] = useState({
         usuario: "",
         pass: ""
     })
     const [errorLog, setErrorLog] = useState();
-    const [extend, setExtend] = useState();
 
     const displayLogin = (comand) => {
         
@@ -66,10 +65,10 @@ function LoginWidget() {
                 {dispLogin
                 ?
                 <div className="login__count">
-                    <h3>Bienvenido {logUser.usuario}</h3>
+                    <h3>Bienvenido <span>{logUser.usuario}</span></h3>
                     
                     <ul>
-                        <li><Link to="/ordenes">Mis Ordenes</Link></li>
+                        <li><Link to="/orders">Mis Ordenes</Link></li>
                     </ul>
 
                     <button className="login__button login__endSession" onClick={() => cerrar()}>CERRAR SESION</button>

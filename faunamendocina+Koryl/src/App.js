@@ -10,6 +10,7 @@ import Checkout from './components/Checkout';
 import {CartProvider} from './contexts/CartContext';
 import { LoginProvider } from "./contexts/LoginContext";
 import Register from "./components/Register";
+import Orders from "./components/Orders";
 
 function App() {
 
@@ -28,6 +29,7 @@ function App() {
                         <Route path='/cart' element={<Cart/>}/>
                         <Route path='/checkout' element={<Checkout/>}/>
                         <Route path='/registro' element={<Register />}/>
+                        <Route path='/orders' element={<Orders />}/>
 
                         <Route path="*" element={<h1>Error404</h1>}/>
                     </Routes>   
