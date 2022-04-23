@@ -1,0 +1,32 @@
+Proyecto Final del Curso ReactJS
+
+El proyecto consta de un e-commerce, el cual está diseñado para implementarse en un sitio más grande, en este caso, el de Fauna Mendocina 
+(alojado en otro repositorio: https://leonardo-jk.github.io/FaunaMendocina-LeonardoKoryl/). Por esta razón, cuenta con un navBar extra, el }
+cual estará destinado a cumplir dichas funciones en el Sitio global, y del cual solo es funcional el botón “Tienda”, el cual direccionaría a la Store.
+
+En cuanto a la Store, estas son las funcionalidades con la que cuenta:
+
+•	Muestreo del catálogo almacenado en Firebase, el mismo se muestra en su totalidad y se filtra por categoría según se acceda a esta mediante la barra de navegación secundaria.
+
+•	Registro de usuarios, al tocar el widget “INGRESAR” se despliega el Log In, el mismo muestra la opción para registrarse en caso de no estarlo.
+    Si la validación del usuario no es correcta, muestra el mensaje de error.
+    Si la validación es correcta, el widget toma el nombre del usuario y la ventana desplegable pasa a mostrar el enlace para acceder a las ordenes realizadas por dicho usuario y el botón para cerrar sesión.
+    El login tambien se guarda en la sessionStorage, por lo que si se reinicia la página, el usuario no se deslogea.
+    Si entramos en la sección de registro, nos pedirá nuestros datos, como asi tambien un usuario y contraseña. El primero deberá ser validado previamente, antes de poder habilitar el submit. 
+    El segundo, deberá ser repetido para evitar errores.
+    Una vez registrado, se dará el mensaje de bienvenida.
+    Los usuarios registrados son almacenados en firebase.
+
+•	Al seleccionar un ítem, este se muestra en detalle. El botón de “Agregar al Carrito” no se habilita hasta que no se selecciona un tamaño y la cantidad a seleccionar no puede repasar el stock máximo, 
+    el mismo corresponde a la totalidad del producto, si por alguna razón se agregan al carrito cantidades que suman más del stock disponible de un mismo tamaña, la cantidad agregada al carrito se setea en la del stock.
+
+•	Cuando se agregan elementos al carrito, aparece el widget del mismo en la barra de navegación secundaria, indicando la cantidad de unidades totales que contiene.
+
+•	Dentro del carrito, el cual se accede haciendo click en “Terminar compra” o en el widget del carrito, podemos ver una descripción total de la compra, a su vez, podremos vaciar completamente el mismo o eliminar 
+    elementos individuales.
+
+•	Al hacer click en “Procesar compra”, accederemos a la sección de pago. Aquí, inicialmente tendremos que cargar nuestros datos, los mismos se auto llenaran si estamos logeados. A continuación, nos pedirá la forma de 
+    pago y el tipo de entrega. 
+    Finalmente nos mostrara un detalle de los elementos comprados, la forma de pago y entrega para verificar y confirmar previo hacer el pago. Una vea confirmado, se le mostrara al usuario el código de compra y se 
+    almacenara dicha orden en Firebase.
+
